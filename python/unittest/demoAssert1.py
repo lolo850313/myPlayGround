@@ -19,6 +19,8 @@ class demoTest(unittest.TestCase):
     def test6(self):
         self.assertNotIn(3,range(5))
 
+#unittest.main()开始了整个单元测试，这里实际上是调用了main.py中的
+#TestProgram类的构造函数，因为在该文件中有这样一条语句：main = TestProgram。
 if __name__ == "__main__":
     unittest.main()
 
