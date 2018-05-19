@@ -12,4 +12,6 @@ def index(request):
 @asyncio.coroutine
 def init(loop):
     app = web.Application(loop=loop)
-    
+    app.router.add_route('GET', '/', index)
+    srv = yield from loop.creat_server(app.)
+
