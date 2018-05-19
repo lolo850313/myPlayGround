@@ -19,3 +19,5 @@ def produce(c):
 
 c = consumer()
 produce(c)
+
+#send将yield变成一个输入入口。
