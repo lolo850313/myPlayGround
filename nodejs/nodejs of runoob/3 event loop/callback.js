@@ -7,8 +7,11 @@
 // 非阻塞代码
 var fs = require('fs')
 
-fs.readFile('\\lolo\\nodejs\\nodejs of runoob\\2 allback\\input.txt', function (err, data) {
-    if(err) return console.error(err)
+fs.readFile('\\lolo\\nodejs\\nodejs of runoob\\3 event loop\\input.txt', function (err, data) {
+    if(err) {
+        console.log(err)
+        return
+    }
     console.log(data.toString())
 })
 console.log('program end!')
