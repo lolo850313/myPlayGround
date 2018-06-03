@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 </head>
     <style>
             body{
@@ -42,7 +43,7 @@
     <div class="content">
         <div id="app">
             <div class="middle">
-                <div class="select">
+                <div class="select" v-on:click="screen(event)">
                     <ul>
                         <li>html</li>
                         <li>css</li>
@@ -50,17 +51,24 @@
                         <li>vue</li>
                     </ul>
                 </div>
-                <div class="screen"><p>{{selectName}}</p></div>
+                <div class="screen">{{selectName}}</div>
             </div>
         </div>
     </div>
 
 </body>
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js">
+<script type="text/javascript">
 new Vue({
     el :'#app',
-    data:{
-        selectName :"1",
+    data:function(){
+        return {
+            selectName :"",
+        }
+    },
+    methods:{
+        screen(event){
+            this.selectName = event.target.innerHTML
+        }
     }
 })
 </script>
