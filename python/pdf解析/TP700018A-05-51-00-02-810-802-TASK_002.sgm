@@ -1,6 +1,0 @@
-﻿<!DOCTYPE task PUBLIC "-//ACAC//DTD ARJ21 ARJFRMFIM task 200508//EN"><task chapnbr="05" func="810" key="fim0551t802" pgblknbr="2" sectnbr="51" seq="802" subjnbr="00"><?Pub Dtl><effect label="ALL"><?Pub Dtl></effect><title><?Pub Dtl>
-灰尘过多&mdash;&mdash;故障隔离</title><tfmatr><?Pub Dtl><pretopic><?Pub Dtl><title><?Pub Dtl>
-概述</title><list1><?Pub Dtl><l1item><?Pub Dtl><para><?Pub Dtl>本隔离任务是针对故障代码为055 411 00的观察到的故障。
-</para></l1item></list1></pretopic></tfmatr><topic><?Pub Dtl><title><?Pub Dtl>
-故障隔离程序</title><subtask chapnbr="05" func="800" key="fim0551st002" pgblknbr="2" sectnbr="51" seq="002" subjnbr="00"><?Pub Dtl><effect label="ALL"><?Pub Dtl></effect><list1><?Pub Dtl><l1item><?Pub Dtl><para><?Pub Dtl>
-执行任务：尘土过多时的视情检查，AMM TASK 05-51-27-210-801。</para><para><?Pub Dtl><refext docnbr="TP700004-02" refloc="mpp055127t210801" refman="AMM" refmodel="ARJ21"><?Pub Dtl></refext></para></l1item></list1></subtask></topic></task>
