@@ -5,7 +5,7 @@ app.config.from_object('config')
 
 @app.route('/book/search/<q>/<page>')
 def search(q,page):
-    is_isbn_or_key = is_isbn_or_key(q)
+    isbn_or_key = is_isbn_or_key(q)
     pass
 
 if __name__ == '__main__':
