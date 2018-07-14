@@ -1,11 +1,9 @@
-from flask import Flask
-from helper import is_isbn_or_key
-from yushu_book import YuShuBook
-# import json
-from flask import jsonify 
+from flask import jsonify
+from app.fisher import app
 
-app = Flask(__name__)
-app.config.from_object('config')
+from app.helper import is_isbn_or_key
+from app.yushu_book import YuShuBook
+
 
 @app.route('/book/search/<q>/<page>')
 def search(q,page):
@@ -16,6 +14,3 @@ def search(q,page):
         result = YuShuBook.search_by_keyword(q)
     # return json.dumps(result), 200, {'content-type' : 'application/json'}
     return jsonify(result)
-
-if __name__ == '__main__':
-    app.run(host='127.0.0.1',debug=app.config['DEBUG'],port=81)
