@@ -6,6 +6,8 @@
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 </head>
+<!-- 子单元通过 prop 接口与父单元进行了良好的解耦。
+我们现在可以进一步改进 <todo-item> 组件，提供更为复杂的模板和逻辑，而不会影响到父单元。 -->
 <body>
     <div id="app">
         <ol>
@@ -14,10 +16,12 @@
     </div>
 </body>
 <script type ="text/javascript">
+// 列表组件
 Vue.component("todo-item", {
     props:['todo'],
     template:'<li>{{todo.text}}</li>'
 })
+
 var app = new Vue({
     el :'#app',
     data:{
