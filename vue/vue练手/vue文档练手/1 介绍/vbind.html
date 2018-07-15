@@ -9,14 +9,16 @@
 <body>
     <div id="app">
         <span v-bind:title="message">鼠标悬停几秒钟查看此处动态绑定的提示信息！</span>
+        <!-- 注意于上面的区别 -->
+        <span title={{message}}>鼠标悬停几秒钟查看此处动态绑定的提示信息！</span>
     </div>
 </body>
 <script type ="text/javascript">
-var app = new Vue({
-    el :'#app',
-    data:{
-        message :'页面加载与' + new Date().toString()
-    }
-})
+    var app = new Vue({
+        el :'#app',
+        data:{
+            message :'页面加载与' + new Date().toString()
+        }
+    })
 </script>
 </html>

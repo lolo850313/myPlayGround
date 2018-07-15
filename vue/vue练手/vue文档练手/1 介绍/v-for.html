@@ -10,6 +10,10 @@
     <div id="app">
         <ol>
             <li v-for="todo in todos">{{todo.text}}</li>
+            <!-- 注意上下2种形式结果是一致的 -->
+            <li >{{todos[0].text}}</li>
+            <li >{{todos[1].text}}</li>
+            <li >{{todos[2].text}}</li>
         </ol>
     </div>
 </body>

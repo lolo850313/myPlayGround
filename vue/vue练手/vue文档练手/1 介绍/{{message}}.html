@@ -8,14 +8,21 @@
 </head>
 <body>
     <div id="app">
-        {{message}}
+        <div>
+            {{message}}
+        </div>
+        <div>
+            {{message2}}            
+        </div>
     </div>
+
 </body>
 <script type ="text/javascript">
 var app = new Vue({
     el :'#app',
     data:{
-        message :"hello vue!"
+        message :"hello vue!",
+        message2 : "helo v"
     }
 })
 </script>
