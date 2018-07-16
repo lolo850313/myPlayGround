@@ -9,12 +9,23 @@
 <body>
     <div id="app">
         <button v-bind:disabled="isButtonDisabled">Button</button>
+        <button v-if="seen">Button</button>
+        <button v-on:click="makeSeen">Button</button>
     </div>
 </body>
 <script type ="text/javascript">
-new Vue({
+var vm =new Vue({
     el : "#app",
-    data :{isButtonDisabled : true},
+    data :{isButtonDisabled : null,
+            seen : false},
+    methods : {
+        makeSeen:function(){
+            this.seen = true
+        }
+    },
 })
+
+// vm.$el vm.$data 可以在网页中调出，vm.isButtonDisabled vm.seen 可以在网页中调出
+// vm.$methods, vm.#app不能在网页中调出
 </script>
 </html>
