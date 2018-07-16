@@ -16,11 +16,21 @@
 var vm = new Vue({
     el : "#app",
     data : {"message": "hello"},
+    // 计算属性。计算属性只有在它的相关依赖发生改变时才会重新求值。这就意味着只要 message 还没有发生改变，
+    // 假设我们有一个性能开销比较大的的计算属性 A，
+    // 它需要遍历一个巨大的数组并做大量的计算。然后我们可能有其他的计算属性依赖于 A 。
+    // 计算属性 顾名思义 用于计算用
     computed:{
         reversedMessage:function () {
                 return this.message.split("").reverse().join("")
         }
-    }
+    },
+    // 使用methods也可以达到同样效果
+    // methods:{
+    //     reversedMessage:function () {
+    //             return this.message.split("").reverse().join("")
+    //     }
+    // }
 })
 </script>
 </html>
