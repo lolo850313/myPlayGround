@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 使用v-if实现判断，并添加v-else块 -->
+        <h1 v-if="ok">Yes</h1>
+        <h2 v-else>No</h2>
+
+        <template v-if="ok">
+            <h1>Title</h1>
+            <p>paragraph 1</p>
+            <p>paragraph 2</p>
+        </template>
+        
+        <div v-if="Math.random()>0.5">Now you see me</div>
+        <div v-else>Now you don`t</div>
+
+        <!-- v-else-if,可以连续使用 -->
+        <div v-if="type === 'A'">A</div>
+        <div v-else-if="type === 'B'">B</div>
+        <div v-else-if="type === 'C'">C</div>
+        <div v-else>Not A/B/C</div>
+
+    </div>
+</body>
+<script type ="text/javascript">
+var vm = new Vue({
+    el:"#app",
+    data:{
+        ok : false,
+        type:"A"
+    },   
+})
+</script>
+</html>

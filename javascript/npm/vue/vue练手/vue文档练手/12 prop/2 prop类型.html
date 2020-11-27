@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+</head>
+    <body>  
+       <div id="example">
+            <blog-post post-title = "hello!"></blog-post>   
+        </div>
+    </body>
+<script type ="text/javascript">
+    Vue.component("blog-post", {
+        // 以字符串数组形式的props不能指定类型
+        // props:["title","likes","isPublished","commentIds","author"],
+        
+        // 当以对象形式列出props，属性的名称和值分别是prop各自的名称和类型
+        props:{
+            postTitle:String,
+            likes:Number,
+            isPublished:Boolean,
+            commentIds:Array,
+            author:Object
+        },
+        template:"<h3>{{ postTitle}}</h3>"
+    })
+    new Vue({
+        el:'#example',
+
+    })
+</script>
+</html>

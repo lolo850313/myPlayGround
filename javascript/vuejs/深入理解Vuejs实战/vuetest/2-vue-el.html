@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Vue直接引入Script资源</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script>
+    const vm = new Vue({
+      template : "<div>{{ message }}</div>",
+      data(){
+        return {
+          message :"welcome"
+        }
+      },
+      mounted(){
+        console.log(this.$el)
+      }
+    })
+    //显式调用vm.$mount()手动开启编译，
+    vm.$mount("#app")
+  </script>
+</body>
+
+</html>

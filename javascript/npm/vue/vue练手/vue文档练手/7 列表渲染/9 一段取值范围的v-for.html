@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+</head>
+<body>
+    <ul id="example-2">
+        <span v-for="(n) in 10">{{ n }}</span>
+        <!-- 使用带有vfor的template渲染多个元素 -->
+        <template v-for="(item) in items">
+            <li>{{item.msg}}</li>
+            <!-- divider是空白行 -->
+            <li class="divider"></li>
+        </template>
+    </ul>
+    <ul v-if="todos.length">
+        <!-- vfor的优先级比vif高，意味vif将分别重复运行于每个vfor中。 -->
+        <li v-for="(todo) in todos">{{ todo.msg }}</li>
+    </ul>
+    <p v-else>No todos left</p>
+</body>
+<script type ="text/javascript">
+
+var vm = new Vue({
+    el:"#example-2",
+    data:{
+        items:{
+            a :{msg:1},
+            b :{msg:2}
+        },
+        todos:{
+            a:{
+                msg:aaa,
+                isComplete: true
+            },
+            b:{
+                msg:bbb,
+                isComplete: false
+            }
+        }
+    },
+})
+</script>
+</html>

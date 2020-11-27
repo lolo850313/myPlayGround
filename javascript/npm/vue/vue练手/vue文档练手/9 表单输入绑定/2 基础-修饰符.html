@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+</head>
+    <body>  
+        <div id="example">
+            <!-- 默认情况下，vmodel在input事件触发后将输入框与数据进行同步。
+            添加lazy修饰符后，转变为使用change事件进行同步。 -->
+            <input type="text" v-model.lazy="msg" id="">
+            <label for="">{{ msg }}</label>
+            <br>
+
+            <!-- 如果想自动将用户的输入值转为数值类型类，可以添加.number修饰符 -->
+            <!-- 即使在type = number时，html输入元素的值也会返回字符串 -->
+            <input type="number" name="" id="" v-model.number="age">
+            <label for="">{{ age }}</label>
+            <br>
+
+            <!-- 如果要自动过滤用户输入的首尾空白字符，可以添加.trim修饰符 -->
+            <input type="text" name="" id="" v-model.trim="msg1">
+            <label for="">{{ msg1 }}</label>
+            <br>
+
+        </div>      
+</body>
+<script type ="text/javascript">
+    var example3 = new Vue({
+        el: '#example',
+        data:{
+            msg:'',
+            age :'',
+            msg1 : ''
+        }
+    })
+</script>
+</html>

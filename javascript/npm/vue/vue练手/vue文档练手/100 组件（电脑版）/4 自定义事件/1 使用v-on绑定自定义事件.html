@@ -1,0 +1,51 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+</head>
+    <body>  
+        <div id="counter-event-example">
+            <p>{{ total }}</p>
+            <button-counter v-on:increment="incrementTotal"></button-counter>
+            <button-counter v-on:increment="incrementTotal"></button-counter>
+        </div> 
+    </body>
+<script type ="text/javascript">
+    // 每个Vue实例都实现了事件接口，即
+    // $on(eventName)监听事件
+    // $emit(eventName)触发事件
+    // 父组件使用子组件的地方直接用v-on来监听子组件触发的事件    
+    Vue.component('buttonCounter', {
+        template:'<button v-on:click="incrementCounter">{{ counter }}</button>',
+        data:function () {
+            return {
+                counter : 0
+            }
+        },  
+        methods:{
+            incrementCounter:function(){
+                this.counter += 1
+                this.$emit('increment')
+            }
+        }     
+    })
+    // 子组件通过von监听click事件，click后触发子组件methods的incrementCounter函数后触发increment事件。
+    // 父组件通过von监听increment事件，触发事件后执行父组件methods的incrementTotal函数。
+    new Vue({
+        el:'#counter-event-example',
+        data:{
+            total:0
+        },
+        methods:{
+            incrementTotal:function(){
+                this.total += 1
+            }
+        }
+    })
+</script>
+</html>

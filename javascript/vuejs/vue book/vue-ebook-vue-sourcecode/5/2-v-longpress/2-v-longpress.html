@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Vue直接引入Script资源</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+        <div v-longpress="longPress">{{text}}</div>
+        <div>11</div>
+    </div>
+    <script>
+      new Vue({
+        el: "#app",
+        directives: {
+          "longpress": {
+            bind: function(el, binding, vNode) {
+              // 确保提供的表达式是函数
+              if (typeof binding.value !== "function") {
+                // 获取组件名称
+                const compName = vNode.context.name;
+                // 将警告传递给控制台
+                let warn = `[longpress:] provided expression '${
+                  binding.expression
+                }' is not a function, but has to be `;
+                if (compName) {
+                  warn += `Found in component '${compName}' `;
+                }
+                console.warn(warn);
+              }
+              // 定义变量
+              let pressTimer = null;
+              // 定义函数处理程序
+              // 创建计时器（ 1秒后执行函数 ）
+              el.startEvent = e => {
+                if (e.type === "click" && e.button !== 0) {
+                  return;
+                }
+                if (pressTimer === null) {
+                  pressTimer = setTimeout(() => {
+                    // 执行函数
+                    handler();
+                  }, 1000);
+                }
+              };
+              // 取消计时器
+              el.cancelEvent = e => {
+                // 检查计时器是否有值
+                if (pressTimer !== null) {
+                  clearTimeout(pressTimer);
+                  pressTimer = null;
+                }
+              };
+              // 运行函数
+              const handler = e => {
+                // 执行传递给指令的方法
+                binding.value(e);
+              };
+              // 添加事件监听器
+              el.addEventListener("mousedown", el.startEvent, true);
+              el.addEventListener("touchstart", el.startEvent, true);
+              // 取消计时器
+              el.addEventListener("click", el.cancelEvent, true);
+              el.addEventListener("mouseout", el.cancelEvent, true);
+              el.addEventListener("touchend", el.cancelEvent, true);
+              el.addEventListener("touchcancel", el.cancelEvent, true);
+            },
+            unbind: function(el) {
+              // 解绑事件
+              el.removeEventListener("mousedown", el.startEvent, true);
+              el.removeEventListener("touchstart", el.startEvent, true);
+              // 取消计时器
+              el.removeEventListener("click", el.cancelEvent, true);
+              el.removeEventListener("mouseout", el.cancelEvent, true);
+              el.removeEventListener("touchend", el.cancelEvent, true);
+              el.removeEventListener("touchcancel", el.cancelEvent, true);
+            }
+          }
+        },
+        data() {
+          return {
+            text: "初始化"
+          };
+        },
+        methods: {
+          // 长按时执行该方法
+          longPress(){
+            this.text = "长按"
+            alert("长按")
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

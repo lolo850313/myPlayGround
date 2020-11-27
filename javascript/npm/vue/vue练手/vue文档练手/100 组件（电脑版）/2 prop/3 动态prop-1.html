@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+</head>
+    <body>  
+        <div id="example">
+            <input type="text" v-model="parentMsg">
+            <br>
+            <child v-bind:my-message = "parentMsg"></child>
+        </div>        
+    </body>
+<script type ="text/javascript">
+    // 使用vbind动态的将props绑定到父组件的数据
+    Vue.component('child', {
+        props:['myMessage'],
+        template:'<span>{{ myMessage }}</span>',        
+    })
+
+    new Vue({
+        el:'#example',
+        data:{
+            parentMsg:'Message from parent'
+        }
+    })
+</script>
+</html>

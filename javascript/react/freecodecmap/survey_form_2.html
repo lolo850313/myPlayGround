@@ -1,0 +1,63 @@
+<html>
+<head>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<style>
+    img {
+        max-width: 100%;
+        display: block;
+        height: auto;
+        margin: 0 auto;
+      }
+</style>
+<body>
+    <div id="main" >
+        <head>
+            <h1 id="title">freeCodeCamp Survey Form</h1>
+            <p id="description">Thank you for taking the time to help us improve the platform</p>    
+        </head>
+        <form action="" id="survey-form">
+            <div>
+                <label for="Name">Name</label>
+                <br />
+                <input type="text" id="name-label" name='name' placeholder="Enter your name" required>
+            </div>
+            <div>
+                <label for="Email">Email</label>
+                <br />
+                <input type="email" id="email-label" placeholder="Enter your Email" required>
+            </div>
+            <div>
+                <label for="age">Age(optional)</label>
+                <br />
+                <input type="number" id="number-label" min='0' max='99' placeholder='Age'>
+            </div>
+            <div>
+                <p>Which option best describes your current role?</p>
+                <select id="dropdown" name='role' required>
+                    <!-- disabled首次加载被禁用， seleceted默认选中 value定义送往服务器的值 -->
+                    <option disabled selected value>Select current role</option>
+                    <option value="student">Student</option>
+                    <option value="job">Full time job</option>
+                    <option value="teacher">Full time teacher</option>
+                    <option value="preferNo">Prefer not to say</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div>
+                <form action="" id="dropdown">
+                    <input type="radio" name="definitely" id="Definitely" value="Definitely">
+                    <input type="radio" name="maybe" id="Maybe">
+                    <input type="radio" name="notSure" id="Not sure">
+                </form>
+            </div>
+        </form>
+        
+    </div>
+<script type="text/babel">
+
+</script>
+</body>
+</html>

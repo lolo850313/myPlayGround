@@ -1,0 +1,1 @@
+@app.route('/result', methods = ['POST', 'GET'])

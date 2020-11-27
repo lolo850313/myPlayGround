@@ -1,0 +1,9 @@
+package runnoob.directory;
+//import org.apache.commons.io.FileUtils;
+//
+//public class sizeOfDir_5 {
+//    public static void main(String[] args) {
+//        long size = FileUtils.sizeOfDirectory(new File("c:/test"));
+//        System.out.println("Size : " + size + " bytes");
+//    }
+//}

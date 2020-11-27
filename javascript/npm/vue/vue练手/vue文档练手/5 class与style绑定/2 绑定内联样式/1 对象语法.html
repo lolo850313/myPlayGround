@@ -1,0 +1,37 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- vbind：style的对象语法十分直观，其实是一个JavaScript对象 -->
+        <!-- <div v-bind:style="{color:activeColor, fontSize: fontSize + 'px'}">12</div> -->
+        <!-- 直接绑定到一个样式上，模板更清晰 -->
+        <!-- <div v-bind:style="[colorStyle,fontStyle]">12</div> -->
+        <!-- style绑定中的属性提供一个包含多个值的数组，常用于提供多个带前缀的值 -->
+        <div v-bind:style="{display:['-webkit-box', '-ms-flexbox', 'flex']}">12</div>
+        
+    </div>
+</body>
+<script type ="text/javascript">
+var vm = new Vue({
+    el:"#app",
+    data:{
+        activeColor: "red",
+        fontSize: 30,
+        styleObject:{
+            color:'red',
+            fontSize:'13px'
+        },
+        colorStyle:{color:"red"},
+        fontStyle:{fontSize:"30px"},
+    },   
+})
+</script>
+</html>

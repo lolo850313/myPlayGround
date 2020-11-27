@@ -1,0 +1,35 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+</head>
+<body>
+    <div id="example-2">
+        <button v-on:click="greet">greet</button>
+    </div>
+</body>
+<script type ="text/javascript">
+    var example2 = new Vue({
+        el: '#example-2',
+        data:{
+            name : "Vue.js"
+        },
+        methods:{
+            greet:function(event){
+                alert("Hello " + this.name + "!")
+                if(event){
+                    alert(event.target.tagName)
+                }
+            }
+        }
+    })
+
+    // 用javascript直接调用方法,此处并没有触发greet中的if部分，因为event是false
+    example2.greet()
+</script>
+</html>

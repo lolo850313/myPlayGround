@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"path": "..\\.."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "vue",
+		"python.pythonPath": "C:\\Users\\lolobook\\AppData\\Local\\Programs\\Python\\Python37\\python.exe",
+		"git.ignoreLimitWarning": true
+	},
+	"launch": {
+		"configurations": [
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Launch Program",
+			"program": "${workspaceFolder}/app.js",
+			"skipFiles": [
+				"<node_internals>/**"
+			]
+		}
+		]
+	}
+}

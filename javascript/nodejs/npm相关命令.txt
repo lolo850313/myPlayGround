@@ -1,0 +1,17 @@
+    npm -v 来测试是否成功安装
+    查看当前目录已安装插件：npm list
+    更新全部插件： npm update [ --save-dev ]
+    使用 npm 更新对应插件： npm update <name> [ -g ] [ --save-dev]
+    使用 npm 卸载插件： npm uninstall <name> [ -g ] [ --save-dev ]
+
+cnpm
+
+    淘宝团队做的国内镜像，因为npm的服务器位于国外可能会影响安装。淘宝镜像与官方同步频率目前为 10分钟 一次以保证尽量与官方服务同步。
+    安装：命令提示符执行
+    npm install cnpm -g --registry=https://registry.npm.taobao.org
+    cnpm -v 来测试是否成功安装
+
+作者：Upcccz
+链接：https://www.jianshu.com/p/115594f64b41
+来源：简书
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。

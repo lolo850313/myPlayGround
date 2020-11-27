@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Editor</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style type="text/css">
+    table tr td{
+        border:1px solid gray;
+        padding:10px;
+        
+    }
+    table{
+        border-collapse:collapse;
+        width:800px;
+        table-layout:fixed;
+    }
+    tr.firstLine{
+        background-color: lightGray;
+    }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <table>
+            <thead>
+                <tr class="firstLine">
+                    <td>人民币</td>
+                    <td>美元</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td align="center" colspan="2">
+                        汇率：<input type="number" v-model.number="exchange" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        ￥: <input type="number" v-model.number="rmb" />
+                    </td>
+                    <td align="center">
+                        $:<input type="number" v-model.number="dollar" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>            
+    </div>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                exchange : 6.4,
+                rmb : 0,
+                dollar : 0,
+            },
+            methods: {
+            },
+            watch: {
+                dollar:function(e){
+                    // 一个属性影响多个属性，此处的e代表此时dollar的数值。
+                    this.dollar = e
+                    this.rmb = this.dollar * this.exchange
+                },
+                rmb:function(e){
+                    //此处的e代表此时rmb的数值。
+                    this.rmb = e
+                    this.dollar = this.rmb / this.exchange
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

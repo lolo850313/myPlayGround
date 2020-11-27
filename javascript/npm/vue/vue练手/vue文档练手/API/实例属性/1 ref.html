@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+</head>
+    <body>  
+       <div id="example">
+            <!-- vm.$refs.p will be the dom node -->
+            <!-- 比如vm.$refs.p.innerText的值是"hello" -->
+            <p ref="p">hello</p>
+
+            <!-- vm.$refs.child will be the child comp instance -->
+            <!-- vm.$refs.child.$el是"<span>child ref</span>"
+            vm.$refs.child.$el.innerHTML是"child ref" -->
+            <child-comp ref="child"></child-comp>
+            
+       </div>
+    </body>
+<script type ="text/javascript">
+    // ref被用来给元素或子组件注册引用信息。引用信息会注册在父组件的$refs对象上。
+    // 如果在普通的DOM元素上使用，引用指向的就是DOM元素
+    // 如果是子组件上，引用就指向组件实例
+    var Child = {
+        template:"<span>child ref</span>"
+    }
+
+    var vm =new Vue({
+        el:'#example',
+        components:{
+            'child-comp' :Child
+        }
+    })
+</script>
+</html>

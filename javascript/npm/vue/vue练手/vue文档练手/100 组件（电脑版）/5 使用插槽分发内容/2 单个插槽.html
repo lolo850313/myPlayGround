@@ -1,0 +1,41 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+</head>
+    <body>  
+        <div id="example">
+            <h1>我是父组件的标题</h1>
+            <my-component>
+                <p>这是一些初始内容</p>
+                <p>这是更多的初始内容</p>
+            </my-component>
+        </div>
+    </body>
+<script type ="text/javascript">
+// 最初在 slot标签中的任何内容都被视为备用内容，备用内容在子组件的作用域内编译，并且只有在宿主元素为空，
+// 且没有要插入的内容时才显示内用内容。
+    Vue.component("my-component", {
+        template:`\
+            <div>\
+                <h2>我是子组件的标题</h2>\
+                <slot>\
+                    只有在没有要分发的内容时才会显示。\
+                </slot>\
+            </div>\
+            `
+    })   
+
+
+    new Vue({
+        el:'#example',
+        data:{
+        }
+    })
+</script>
+</html>

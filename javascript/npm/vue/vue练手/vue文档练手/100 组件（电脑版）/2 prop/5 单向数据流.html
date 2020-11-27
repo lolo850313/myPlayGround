@@ -1,0 +1,53 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+</head>
+    <body>  
+        <div id="example">
+            <input type="text" v-model="parentMsg">
+            <br>
+            <child my-message = " aAa1"></child>
+            <br>
+
+            <child1 my-message = " aAa "></child1>
+        </div>        
+    </body>
+<script type ="text/javascript">
+    // prop是单向绑定的，当父组件属性变化时，将传递给子组件，但反过来不会。
+    // prop作为初始数值传入后，子组件吧他当作局部数据来用。
+    Vue.component('child', {
+        props:['myMessage'],
+        template:'<span>{{ counter }} </span>',    
+        data :function () {
+            return {
+                counter:this.myMessage
+            }
+        }    
+    })
+
+    // 当父组件更新，子组件的所有prop都会更新，所以我们不能在子组件内部改变prop。
+    // prop作为原始数值传入，由子组件处理成其他数据输出。
+    Vue.component('child1', {
+        props:['myMessage'],
+        template:'<span>{{ lower }}</span>',
+        computed:{
+            lower:function(){
+                return this.myMessage.trim().toLowerCase()
+            }
+        }  
+    })
+
+    new Vue({
+        el:'#example',
+        data:{
+            parentMsg:'Message from parent'
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,41 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+</head>
+    <body>  
+       <div id="example">
+
+            <!-- 即便42是静态的，我们也需要vbind来告诉vue
+            这是一个javascript表达式，而不是字符串 -->
+            <!-- <blog-post v-bind:likes = "42"></blog-post>    -->
+
+            <!-- 用一个变量进行动态复制 -->
+            <blog-post v-bind:likes = "post.likes "></blog-post>   
+        </div>
+    </body>
+<script type ="text/javascript">
+    Vue.component("blog-post", {
+        props:["likes"],
+        template:"<h3>{{ likes }}</h3>"
+    })
+    new Vue({
+        el:'#example',
+        data:{
+            post:{
+                id:1,
+                title:'My journey with Vue',
+                author:{
+                    name:'mike'
+                },
+                likes:"42",
+            }
+        }
+    })
+</script>
+</html>

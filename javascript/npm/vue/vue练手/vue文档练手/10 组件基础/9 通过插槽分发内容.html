@@ -1,0 +1,38 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+</head>
+    <body>  
+        <div id="blog-posts-events-demo">
+            <alert-box>
+                Something bad happened.
+            </alert-box>      
+        </div>   
+
+</body>
+<script type ="text/javascript">
+    // 加入slot后，Error可用strong标签，slot是文本外的标签
+    Vue.component('alert-box', {
+        template:`
+        <div class="demo-alert-box">
+            <strong>Error!</strong>
+            <slot></slot>
+        </div>
+        `
+    })
+
+    new Vue({
+        el :"#blog-posts-events-demo",
+        data:{
+        }
+    })
+</script>
+</html>
+
+ 

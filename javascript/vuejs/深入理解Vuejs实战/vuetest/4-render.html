@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Vue直接引入Script资源</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<style>
+  html, body {
+    height: 100%;
+    color: #61DAFB;
+    background: #2D2D2D;
+  }
+  
+  h1 {
+    margin: 20px 0 15px 0;  
+  }
+  
+  #main {
+    width: 600px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  
+  ul {
+    list-style: none;
+  }
+  
+  ul>li:hover {
+    background-color: #F5F5F5;
+  }
+  
+  .form-inline .form-control {
+    width: 50%;
+    margin-left: 80px;
+  }
+  
+  .done {
+    color: red;
+    text-decoration: line-through;
+  }
+  
+  .undone {
+    color: #61DAFB;
+  }
+  
+  .icon {
+    margin: 6px 10px 6px 0;
+  }
+  
+</style>
+<body>
+  <div id="app">
+    <div>{{ message }}</div>
+    <div v-once>{{ message }}</div>
+    <div v-html="message"></div>
+    
+    <div>{{ msgHtml }}</div>
+    <div v-html="msgHtml"></div>
+  </div>
+
+  <script>
+    new Vue({
+      el :"#app",
+      data(){
+        return {
+          message :"welcome",
+          msgHtml : "<p style='color: red'>欢迎来到红色Vue的世界</p>"
+        }
+      },
+      created(){
+        this.message = "lalalalala"
+      },
+      mounted(){
+        this.message = "luelueluelue"
+      },
+    })
+  </script>
+</body>
+
+</html>

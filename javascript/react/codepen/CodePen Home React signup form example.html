@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Hello React!</title>
+<!-- https://codepen.io/hartzis/pen/VvNGZP?editors=0010 -->
+<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<style>	  
+</style>
+</head>
+<body>
+<script type="text/babel">
+	class ImageUpload extends React.Component {
+		constructor(props) {
+			super(props);
+			this.state = {file: '',imagePreviewUrl: ''}
+			this._handleSubmit = this._handleSubmit.bind(this)
+		}
+		
+		_handleSubmit(e) {
+			e.preventDefault();
+		  // TODO: do something with -> this.state.file
+			console.log('handle uploading-', this.state.file);
+		}
+		_handleImageChange(e) {
+			e.preventDefault();
+
+			let reader = new FileReader();
+			let file = e.target.files[0];
+
+			reader.onloadend = () => {
+			this.setState({
+				file: file,
+				imagePreviewUrl: reader.result
+			});
+			}
+		  //Data URL是一种将小文件直接嵌入文档的方案。这里的小文件通常是指图像与 html 等格式的文件。
+			reader.readAsDataURL(file)
+		}
+		render() {
+			let {imagePreviewUrl} = this.state;
+			let $imagePreview = null;
+			if (imagePreviewUrl) {
+			$imagePreview = (<img src={imagePreviewUrl} />);
+			} else {
+			$imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
+			}
+			return (
+			<div className="previewComponent">
+				<form onSubmit={(e)=>this._handleSubmit(e)}>
+					<input className="fileInput" 
+						type="file" 
+						onChange={(e)=>this._handleImageChange(e)} />
+					<button className="submitButton" 
+						type="submit" 
+						onClick={this._handleSubmit}>Upload Image</button>
+				</form>
+				<div className="imgPreview">
+				{$imagePreview}
+				</div>
+			</div>
+			)
+		}
+	}
+		
+	ReactDOM.render(<ImageUpload/>, document.getElementById("mainApp"));
+</script>
+<h3>React Image Preview & Upload Component</h3>
+<div id="mainApp"></div>
+<div class="centerText"><span>Checkout associated </span><a href="http://www.hartzis.me/react-image-upload/" target="_blank">blog post</a></div>
+</body>
+</html>

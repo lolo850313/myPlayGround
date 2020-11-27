@@ -1,0 +1,33 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button v-if="seen">Button</button>
+        <button v-on:click="makeSeen">Button</button>
+        <!-- 修饰符是以半角句号指明的特殊后缀，用于指出一个指令应该以特殊方式绑定。.prevent修饰符告诉v-on指令
+        调用event.preventDefault() -->
+        <form v-on:submit.prevent="onSubmit"></form>
+    </div>
+</body>
+<script type ="text/javascript">
+var vm =new Vue({
+    el : "#app",
+    data :{isButtonDisabled : null,
+            seen : false},
+    methods : {
+        makeSeen:function(){
+            this.seen = true
+        }
+    },
+})
+
+// vm.$el vm.$data 可以在网页中调出，vm.isButtonDisabled vm.seen 可以在网页中调出
+// vm.$methods, vm.#app不能在网页中调出
+</script>
+</html>

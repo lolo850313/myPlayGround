@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+</head>
+    <body>  
+        <div id="example">
+            <div class="parent">
+                <child>
+                    <template slot-scope="props">
+                        <span>hello from parent</span>
+                        <span>{{ props.text }}</span>
+                    </template>
+                </child>
+                
+
+            </div>
+        </div>
+    </body>
+<script type ="text/javascript">
+// 在父组件中，具有特殊特性的slot-scope的<template>必须存在，表示他是作用域插槽的模板。
+// slotscope的值被用作一个临时变量名，此变量接受从子组件传递过来的prop对象
+    Vue.component("child", {
+        template:`\
+                <div class="child">\
+                    <slot text="hello from child"></slot>\
+                </div>\
+            `
+    })   
+
+
+    new Vue({
+        el:'#example',
+        data:{
+        }
+    })
+</script>
+</html>

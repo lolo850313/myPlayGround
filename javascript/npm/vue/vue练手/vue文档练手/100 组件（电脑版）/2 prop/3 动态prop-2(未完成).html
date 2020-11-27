@@ -1,0 +1,34 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+</head>
+    <body>  
+        <div id="example">
+            <todo-item v-bind="todo"></todo-item>
+        </div>        
+    </body>
+<script type ="text/javascript">
+    // 把一个对象的所有属性作为prop进行传递，可以使用不带任何参数的v-bind（即用v-bind而不是v-bind:prop-name）
+    Vue.component('todoItem', {
+        props:['todo'],
+        template:'<span>{{ todo.text }}</span>',        
+    })
+
+    new Vue({
+        el:'#example',
+        data:{
+            parentMsg:'Message from parent',
+            todo:{
+                text:'learn vue',
+                isComplete:false
+            }
+        }
+    })
+</script>
+</html>

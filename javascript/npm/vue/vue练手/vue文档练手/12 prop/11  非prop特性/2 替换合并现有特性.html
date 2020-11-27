@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+</head>
+    <body>  
+
+        <div id="example">
+            <!-- 在以下例子中定义了2个不同的class值，form-control来自自身的模板，
+            date-picker-theme-dark来自父组件 -->
+            <!-- 为了不让type=“larege”覆盖type=“date”，将2个特性的值合并操作，最终生成的值为
+            form-control date-picker-theme-dark -->
+            <bs-date-input 
+                date-3d-data-picker="true"
+                class="form-control date-picker-theme-dark"
+            ></bs-date-input>            
+        </div>        
+    </body>
+<script type ="text/javascript">
+    Vue.component('bsDateInput', {
+        props:{
+            
+        },
+        template:'<input type="date" class="form-control">',       
+    })
+
+    new Vue({
+        el:'#example',
+        data:{
+            parentMsg:'Message from parent'
+        }
+    })
+</script>
+</html>

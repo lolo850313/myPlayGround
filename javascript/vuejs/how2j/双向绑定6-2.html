@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Editor</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css">
+    table tr td{
+        border:1px solid gray;
+        padding:10px;
+        
+    }
+    table{
+        border-collapse:collapse;
+        width:800px;
+        table-layout:fixed;
+    }
+    tr.firstLine{
+        background-color: lightGray;
+    }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <table>
+            <thead>
+                <tr>
+                    <td>视图类型</td>
+                    <td>输入数据</td>
+                    <td>绑定到Vue上的数值</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>单行文本</td>
+                    <td>
+                        <input type="text" v-model="msg1">
+                    </td>
+                    <td>{{msg1}}</td>
+                </tr>
+                <tr>
+                    <td>多行文本</td>
+                    <td>
+                        <textarea name="" id="" cols="30" rows="10" v-model="msg2"></textarea>
+                    </td>
+                    <td>{{msg2}}</td>
+                </tr>
+                <tr>
+                    <td>单个复选框</td>
+                    <td>
+                        <input type="checkbox" name="" id="" v-model="msg3">
+                    </td>
+                    <td>{{msg3}}</td>
+                </tr>
+                <tr>
+                    <td>多个复选框</td>
+                    <td>
+                        <form action="">
+                            <input type="checkbox" name="teemo" id="teemo" value="teemo" v-model="msg4" >
+                            <label for="teemo">annie</label>
+                            <input type="checkbox" name="garren" id="garren" value="garren" v-model="msg4">
+                            <label for="garren">annie</label>
+                            <input type="checkbox" name="annie" id="annie" value="annie" v-model="msg4">
+                            <label for="annie">annie</label>
+                        </form>
+                    </td>
+                    <td>{{msg4}}</td>
+                </tr>
+                <tr>
+                    <td>单选按钮</td>
+                    <td>
+                        <form action="">
+                            <input type="radio" name="a" id="one" value="one" v-model="msg5">
+                            <label for="one">one</label>
+                            <input type="radio" name="a" id="two" value="two" v-model="msg5">
+                            <label for="two">two</label>
+                        </form>
+                    </td>
+                    <td>{{msg5}}</td>
+                </tr>
+                <tr>
+                    <td>单选选择框</td>
+                    <td>
+                        <select name="single" id="" size = 4 v-model="msg6">
+                            <option value="" disabled>请选择</option>
+                            <option value="ad">ad</option>
+                            <option value="ac">ac</option>
+                            <option value="adc">adc</option>
+                        </select>
+                    </td>
+                    <td>{{msg6}}</td>
+                </tr>
+                <tr>
+                    <td>多选选择框</td>
+                    <td>
+                        <select name="multi" id="" size = 5 v-model="msg7" multiple>
+                            <option value="" disabled>请多选</option>
+                            <option value="ad">ad</option>
+                            <option value="ac">ac</option>
+                            <option value="adc">adc</option>
+                        </select>
+                    </td>
+                    <td>{{msg7}}</td>
+                </tr>
+                <tr>
+                    <td>单个复选框</td>
+                    <td>输入数据</td>
+                    <td>{{msg8}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                msg1 : "",
+                msg2 : "",
+                msg3 : "",
+                msg4 : [],
+                msg5 : "",
+                msg6 : "",
+                msg7 : [],
+                msg8 : "",
+                msg9 : "",
+            },
+            methods: {
+            }
+        })
+    </script>
+</body>
+
+</html>

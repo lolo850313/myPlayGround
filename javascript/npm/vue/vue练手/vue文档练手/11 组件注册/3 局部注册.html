@@ -1,0 +1,51 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+</head>
+    <body>  
+       <div id="example">
+           <component-a></component-a>
+           <br>
+           <component-b></component-b>
+           <br>
+           <component-c></component-c>
+       </div>
+    </body>
+<script type ="text/javascript">
+
+    // 全局注册意味着即便你不再使用这个组件，他仍然会被包含在你最终的结果中，
+    // 导致用户下载的javascript的增加
+    var componentA = {
+        template:"<div>A component</div>"
+    }
+
+    var componentC = {
+        template:"<div>C component</div>"
+    }
+
+    // 局部注册的组件在其子组件中不可用，如果希望可用，则应该在子组件中注册
+    // 且子子组件应该在其父组件之前声明。
+    var componentB = {
+        template:"<div>B component<component-c></component-c></div>",
+        components:{
+            'component-c':componentC
+        }
+    }
+
+
+    new Vue({
+        el:'#example',
+        components:{
+            'component-a' :componentA,
+            'component-b' :componentB,
+            'component-c' :componentC,
+        }
+    })
+</script>
+</html>

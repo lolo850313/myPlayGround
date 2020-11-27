@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+</head>
+    <body>  
+        <!-- 监听键盘事件时添加按键修饰符 -->
+        <input type="text" v-on:keyup.enter="submit">
+        <input type="text" @keyup.enter="submit">
+
+        <!-- 全部按键别名 .enter .tab .delete .esc .space 
+        .up .down .left .right -->
+
+        <!-- 可通过全局config.keyCodes对象自定义按键修饰符别名： -->
+        <!-- 可以使用v-on:keyup.f1 -->
+        Vue.config.keyCodes.f1 = 112
+
+        <!-- 新增修饰符 .ctrl .alt .shift .meta -->
+        <!-- Alt + C -->
+        <input type="text" @keyup.alt.67 = "clear">
+        <!-- Ctrl + Click -->
+        <div @click.ctrl = "doSomething">Do something</div>
+
+        <!-- .exact修饰符 -->
+        <!-- 即使Alt或Shift一同按下时也会触发 -->
+        <button @click.ctrl="onclick">A</button>
+
+        <!-- 有且只有Ctrl按下会触发 -->
+        <button v-on:click.ctrl.exact="onCtrlClick">A</button>
+    
+        <!-- 没有任何系统修饰符被按下时触发 -->
+        <button @click.exact="onClick">A</button>
+
+        <!-- 鼠标按钮修饰符 left right middle-->
+        
+    </div>
+</body>
+<script type ="text/javascript">
+    var example3 = new Vue({
+        el: '#example-3',
+    })
+</script>
+</html>

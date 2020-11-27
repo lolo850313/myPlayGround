@@ -1,0 +1,45 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue"></script>
+   
+</head>
+    <body>  
+        <div id="dynamic-component-demo">
+            
+        </div>
+    </body>
+<script type ="text/javascript">
+
+// 获取根组件的数据
+// vm.$root.foo 
+
+// 写入根组件的数据
+// vm.$root.foo = 2 
+
+// 访问根组件的计算属性,注意计算属性 是用bar，方法则是用baz()
+// vm.$root.bar 
+
+// 调用根组件的方法
+// vm.$root.baz() 
+
+    var vm = new Vue({
+        data:{
+            foo:1
+        },
+        computed:{
+            bar:function () {
+                return 2
+            }
+        },
+        methods:{
+            baz:function () {
+                return "baz"
+            }
+        }
+    })
+</script>
+</html>

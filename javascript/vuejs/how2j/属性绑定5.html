@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Editor</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css">
+    </style>
+</head>
+<body>
+    <div id="app">
+        <a v-bind:href="page">http://12306.cn</a>
+    </div>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                page : "http://12306.cn"
+            },
+        })
+        
+
+
+    </script>
+</body>
+
+</html>

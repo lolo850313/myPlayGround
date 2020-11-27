@@ -1,0 +1,33 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+</head>
+    <body>  
+        <div id="components-demo">
+              <button-counter></button-counter>
+        </div>      
+</body>
+<script type ="text/javascript">
+    
+    // 注意：应先注册组件，后new Vue，否则
+    // 会报错"For recursive components, make sure to provide the “name” option."
+    Vue.component('button-counter', {
+        data:function(){
+            return {
+                count : 0
+            }
+        },
+        template:'<button v-on:click="count++">You click me {{ count }} times</button>'
+    })
+
+    new Vue({
+        el :"#components-demo"
+    })
+</script>
+</html>

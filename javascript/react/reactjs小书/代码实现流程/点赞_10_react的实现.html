@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Hello React!</title>
+<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        class Button extends React.Component {
+            constructor(props){
+                super(props)
+                this.state = {
+                    good : true,
+                }
+                this.handleClick = this.handleClick.bind(this)
+            }
+
+            handleClick(event){
+                this.setState({
+                    good : !this.state.good
+                })
+            }
+
+            render(){
+                return (
+                    <div id="wrapper">
+                        <button onClick={this.handleClick}>
+                            <span>{this.state.good?"点赞":"取消"}</span>
+                            <span>👍</span>
+                        </button>
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(
+            <Button />,
+            document.getElementById("root")
+        )
+
+
+    </script>
+</body>
+</html>

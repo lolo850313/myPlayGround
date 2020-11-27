@@ -1,0 +1,37 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/pickaday@1.7.0"></script>
+    <script src="https://unpkg.com/vue"></script>
+   
+</head>
+    <body>  
+        <div id="app">
+            <input ref="dateInput" v-model="date" type="date">           
+        </div>
+    </body>
+<script type ="text/javascript">
+
+
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            date:null
+        },
+        mounted:function() {
+            var picker = new Pikaday({
+                field:this.$refs.dateInput,
+                format:'YYYY-MM-DD'
+            })
+
+            this.$once('hook:beforeDestroy', function () {
+                picker.destroy()
+            })
+            
+        },
+    })
+</script>
+</html>

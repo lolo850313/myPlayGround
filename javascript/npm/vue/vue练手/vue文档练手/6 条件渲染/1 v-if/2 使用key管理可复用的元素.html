@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <template v-if="loginType ==='username'">
+            <label for="">Username</label>
+            <input type="text" placeholder="Enter your Username" key="username-input">
+        </template>
+        <template v-else>
+                <label for="">Email</label>
+                <input type="text" placeholder="Enter your Email" key="email-input">
+        </template>
+        <button v-on:click="changeSignin">Toggle login type</button>
+
+    </div>
+</body>
+<script type ="text/javascript">
+var vm = new Vue({
+    el:"#app",
+    data:{
+        loginType : 'username',
+    }, 
+    methods:{
+        changeSignin:function () {
+            if (this.loginType == 'username')
+                {
+                    this.loginType = 'email'
+                    }
+            else
+                {this.loginType = 'username'}
+        }
+    }
+})
+</script>
+</html>

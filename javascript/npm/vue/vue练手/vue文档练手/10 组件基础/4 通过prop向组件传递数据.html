@@ -1,0 +1,30 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+</head>
+    <body>  
+        <div id="components-demo">
+              <blog-post title="My journey with Vue"></blog-post>
+              <blog-post title="Blogging with Vue"></blog-post>
+              <blog-post title="My Vue is so fun"></blog-post>  
+                    
+        </div>      
+</body>
+<script type ="text/javascript">
+    // 当一个值传递给一个prop特性的时候，它就变成了那个组件实例的一个属相。
+    Vue.component('blog-post', {
+        props:['title'],
+        template:'<h3>{{ title }}</h3>'
+    })
+
+    new Vue({
+        el :"#components-demo",
+    })
+</script>
+</html>

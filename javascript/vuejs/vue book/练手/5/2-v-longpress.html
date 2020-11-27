@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div v-longpress="longpress">{{text}}</div>
+    </div>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                text : "初始化"
+            },
+            directives:{
+                "longpress":{
+                    bind: function (el, binding, vNode) {
+                        console.log(vNode)
+                        if (typeof binding.value !== "function"){
+                            const compName = vNode.context.name
+                            let warn = `[longpress:] provided expression '${binding.expression}' is not a function, but has to be `
+                            if (compName) {
+                                warn += `Found in component '${compName}' `
+                            }
+                            console.warn(warn)
+                        }
+
+                        let pressTimer = null
+                        
+                        el.startEvent = e =>{
+                            if(e.type === "click" && e.button !== 0){
+                                return
+                            }
+                            if(pressTimer === null){
+                                pressTimer = setTimeout(()=>{
+                                    handler()
+                                }, 1000)
+                            }
+                        }
+                        el.cancelEvent = e => {
+                            // 检查计时器是否有值
+                            if (pressTimer !== null) {
+                                clearTimeout(pressTimer);
+                                pressTimer = null;
+                            }
+                        }
+
+                        const handler = e => {
+                        // 执行传递给指令的方法
+                            binding.value(e);
+                        };
+                        
+
+                        el.addEventListener("mousedown", el.startEvent, true)
+                        el.addEventListener("touchstart", el.startEvent, true)
+
+                        el.addEventListener("click", el.cancelEvent, true)
+                        el.addEventListener("mouseout", el.cancelEvent, true)
+                        el.addEventListener("touchend", el.cancelEvent, true)
+                        el.addEventListener("touchcancel", el.cancelEvent, true)
+
+                    },
+                    unbind:function(el){
+                        el.removeEventListener("mousedown", el.startEvent, true)
+                        el.removeEventListener("touchstart", el.startEvent, true)
+
+                        el.removeEventListener("click", el.cancelEvent, true)
+                        el.removeEventListener("mouseout", el.cancelEvent, true)
+                        el.removeEventListener("touchend", el.cancelEvent, true)
+                        el.removeEventListener("touchcancel", el.cancelEvent, true)
+                    }
+                }
+            },
+            methods: {
+                longpress(){
+                    this.text = "长按"
+                    alert("长按")
+                }
+            },
+
+        })
+    </script>
+</body>
+</html>

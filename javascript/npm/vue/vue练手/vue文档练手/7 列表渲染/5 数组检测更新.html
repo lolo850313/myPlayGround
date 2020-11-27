@@ -1,0 +1,41 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+</head>
+<body>
+    <ul id="example-2">
+        <li v-for="(item, index) of items">
+            {{parentMessage}} - {{index}} - {{item.message}}
+        </li>
+    </ul>
+</body>
+<script type ="text/javascript">
+// vue包含一组观察者数组的变异方法，push() pop() shift() unshift()
+// splice() sort() reverse()
+// 在console中使用vm.$data.items.push({message:'BBazzzz'})
+// 或vm.items.push({message:'aaaa'})，是改变数组
+var vm = new Vue({
+    el:"#example-2",
+    data:{
+        parentMessage : 'Parent',
+        items:[
+            {message : 'Foo'},
+            {message : 'Bar'}
+        ]
+    },   
+})
+
+// 非变异方法，即不会改变原始数组，但总返回一个新数组，
+// 例子：
+// vm.items = vm.items.filter(function (item) {
+//     return item.message.match(/Foo/) 
+// })
+//    注意此处是 /Foo/
+</script>
+</html>

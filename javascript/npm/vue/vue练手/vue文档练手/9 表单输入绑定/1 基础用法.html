@@ -1,0 +1,135 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+</head>
+    <body>  
+        <!-- vmodel指令在表单input，textarea，select元素上创建双向数据绑定
+        他会根据控件类型自动选取正确的方法来更新元素 -->
+        <div id="example">
+            <!-- 单行文本 -->
+            <input type="text" v-model="message" placeholder="edit me">
+            <p>Message is : {{ message }}</p>  
+            <br>
+
+            <!-- 多行文本 -->
+            <span>Multiline message is:</span>
+            <p style="white-space:pre-lne">{{ message1}}</p>
+            <br>
+            <textarea name="" id="" cols="30" rows="10" v-model="message1" placeholder="add multiple lines"></textarea>
+            <br>
+
+            <!-- 复选框 -->
+
+            <!-- 单个复选框 -->
+            <input type="checkbox" name="" id="checkbox" v-model="checked">
+            <label for="checkbox">{{ checked }}</label>
+            <br>
+
+            <!-- 多个复选框，绑定到布尔值 -->
+            <input type="checkbox" name="" id="jack" value="jack" v-model="checkedNames">
+            <label for="jack">jack</label>
+            <input type="checkbox" name="" id="john" value="john" v-model="checkedNames">
+            <label for="john">john</label>
+            <input type="checkbox" name="" id="mike" value="mike" v-model="checkedNames">
+            <label for="mike">mike</label>
+            <br>
+            <span>Checked namse: {{ checkedNames}}</span>
+            <br>
+        
+            <!-- 单选按钮 -->
+            <input type="radio" name="" id="one"  value="one" v-model="picked">
+            <label for="one">one</label>
+            <br>
+            <input type="radio" name="" id="two"  value="two" v-model="picked">
+            <label for="two">two</label>
+            <br>
+            <span>picked : {{ picked}} </span>
+            <br>
+
+            <!-- 选择框 -->
+
+            <!-- 单选 -->
+            <select name="" id="" v-model="selected">
+                <option disabled value="">请选择</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                
+            </select>
+            <span>Selected : {{ selected }}</span>
+            <br>
+
+            <!-- 多选 -->
+            <select name="" id="" v-model="selected1" multiple style="width: 50px">
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+            </select>
+            <br>
+            <span>Selected : {{ selected1 }}</span>
+            <br>
+
+            <!-- 用vfor渲染的动态选项 -->
+            <select name="" id="" v-model="selected2">
+                <option value="" v-for="(option) in options" v-bind:value="option.value">
+                    {{ option.text }}
+                </option>
+            </select>
+            <span>Selected : {{ selected2 }}</span>
+
+            <!-- 值绑定 -->
+            
+            <!-- 当选中时，picked为字符串a -->
+            <input type="radio" v-model="picked2" value="aaa">
+
+            <!-- toggle为true或false -->
+            <input type="checkbox" v-model="toggle">
+
+            <!-- 当选中第一个选项时，selected为字符串abc -->
+            <select name="" id="" v-model="selected3">
+                <option value="abc">ABC</option>
+            </select>
+
+            <!-- 想把值绑定到Vue实例的一个动态属性上，可以用vbind事项，并且这个属性可以
+            不是字符串 -->
+            <input type="radio" name="" id="" v-model="picked1" v-bind:value="abind">
+            
+            <select name="" id="" v-model="selected4">
+                <option v-bind:value="{number : 123}"> 123 </option>
+            </select>
+
+        </div>      
+</body>
+<script type ="text/javascript">
+    var example3 = new Vue({
+        el: '#example',
+        data:{
+            message:'',
+            message1:'',
+            checked:true,
+            checkedNames:[],
+            picked:'',
+            selected : '',
+            selected1 : [],
+            options :[
+                {text:"one", value : "A"},
+                {text:"two", value : "B"},
+                {text: "three", value:"C"},
+            ],
+            selected2:'',
+            selected3:'',
+            picked1:'',
+            picked2:'',
+            toggle:'',
+            abind:'',
+            selected4:'',
+        }
+    })
+</script>
+</html>

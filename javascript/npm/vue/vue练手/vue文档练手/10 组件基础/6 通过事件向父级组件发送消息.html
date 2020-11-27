@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+</head>
+    <body>  
+        <div id="blog-posts-events-demo">
+            <div :style='{ fontSize: postFontSize + "em"}'>
+                <blog-post 
+                    v-for="(post) in posts" 
+                    v-bind:key="post.id" 
+                    v-bind:post="post"
+                    v-on:enlarge-text="postFontSize += 0.1 ">
+                </blog-post>         
+            </div>              
+        </div>   
+</body>
+<script type ="text/javascript">
+    Vue.component('blog-post', {
+        props:['post'],
+        template:`\
+        <div class="blog-post">\
+            <h3>{{ post.title}}</h3>\
+            <button v-on:click = "$emit('enlarge-text')">Enlarge Text</button>\
+            <div v-html="post.content"></div>\
+        </div> \
+        `
+    })
+
+    // 在父组件中添加一个postFontSize属性，他可以在模板中控制所有博文的字号
+    new Vue({
+        el :"#blog-posts-events-demo",
+        data:{
+            posts:[
+                { id: 1, title: 'My journey with Vue', content: '...content...' },
+                { id: 2, title: 'Blogging with Vue', content: '...content...' },
+                { id: 3, title: 'Why Vue is so fun', content: '...content...' },
+            ],
+            postFontSize:1
+        }
+    })
+</script>
+</html>
+
+ 

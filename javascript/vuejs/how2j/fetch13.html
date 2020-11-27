@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Editor</title>
+    <script src="https://how2j.cn/study/fetch.min.js"></script>
+ 
+<div id="hero">
+ 
+</div>
+ 
+<script>
+var url = "http://how2j.cn/study/json.txt"
+fetch(url).then(function(response) {
+    response.json().then(function (jsonObject) {
+        var jsonString = JSON.stringify(jsonObject)
+        document.getElementById("hero").innerHTML = "通过fetch获取到的json数据："+ jsonString;
+    })
+}).catch(function(err){
+    console.log("Fetch错误:"+err);
+})
+ 
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Editor</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style type="text/css">
+    table tr td{
+        border:1px solid gray;
+        padding:10px;
+        
+    }
+    table{
+        border-collapse:collapse;
+        width:800px;
+        table-layout:fixed;
+    }
+    tr.firstLine{
+        background-color: lightGray;
+    }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <table>
+            <thead>
+                <tr class="firstLine">
+                    <td>输入数据</td>
+                    <td>过滤后的结果</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td align="center">
+                        <input type="text" v-model="input_date" />
+                    </td>
+                    <td align="center">
+                        {{input_date | capitalize | capitalizeLastLetter }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>            
+    </div>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                input_date : "",
+                res : "",
+            },
+            // 过滤器本质就是一种函数，也可以通过methods实现。但编出的代码不便于理解
+            filters:{
+                capitalize:function (val) {
+                    if (!val){
+                        return ""
+                    }
+                    val = val.toString()
+                    return val.charAt(0).toUpperCase() + val.substring(1)
+                },
+                capitalizeLastLetter: function (val) {
+                    if(!val){
+                        return ""
+                    }
+                    val = val.toString()
+                    return val.substring(0, val.length-1) + val.charAt(val.length-1).toUpperCase()
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

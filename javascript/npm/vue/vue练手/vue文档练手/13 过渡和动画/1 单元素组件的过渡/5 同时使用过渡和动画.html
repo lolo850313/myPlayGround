@@ -1,0 +1,30 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel="stylesheet" type="text/css">
+</head>
+
+    <body>       
+        <div class="demo">
+            <button v-on:click="show = !show">
+                Toggle
+            </button>
+            <transition v-on:befor-enter="">
+            
+            </transition>
+        </div>  
+    </body>
+<script type ="text/javascript">
+    
+    new Vue({
+        el:'#demo',
+        data:{
+            show:true
+        }
+    })
+</script>
+</html>

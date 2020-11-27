@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+</head>
+    <body>  
+        <div id="example">
+            <!-- slot特性直接作用在一个普通的元素上 -->
+            <base-layout>
+                <h1 slot="header">Here might be a page title</h1>
+                <p>A paragraph for the main content.</p>
+                <p>And another one.</p>
+                <p slot="footer">Here's some contact info</p>
+            </base-layout>
+        </div>
+    </body>
+<script type ="text/javascript">
+// slot元素可以用一个特殊的特性name来进一步配置如何分发内容。
+// 多个插槽可以有不同的名字。具名插槽将匹配内容片段中有对应slot特性的元素。
+    Vue.component("baseLayout", {
+        template:`\
+            <div class="container">\
+                <header>\
+                    <slot name="header"></slot>\
+                </header>\
+                <main>\
+                    <slot></slot>\
+                </main>\
+                <footer>\
+                    <slot name="footer"></slot>\
+                </footer>\
+            </div>\
+            `
+    })   
+
+
+    new Vue({
+        el:'#example',
+        data:{
+        }
+    })
+</script>
+</html>

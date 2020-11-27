@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+</head>
+    <body>  
+        <!-- 默认情况下，一个组件的v-model会使用value prop和input事件。但诸如单选框，复选框的输入类型可能把value
+        用作了别的目的。model选项可以避免这样的冲突。 -->
+
+        <div id="currency">
+            <my-checkbox v-model="foo" value="some value"></my-checkbox>
+        </div>
+    </body>
+<script type ="text/javascript">
+    Vue.component('my-checkbox', {
+        model:{
+            prop:"checked",
+            event:"change",
+        },
+        props:{
+            checked:Boolean,
+            value:String
+            },
+        
+    })
+
+
+    new Vue({
+        el:'#currency',
+        data:{
+            price:''
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Hello React!</title>
+<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+
+<div id="example"></div>
+<script type="text/babel">
+	class App extends React.Component {
+		render() {
+		  return <Toolbar theme="dark" />;
+		}
+	  }
+	  
+	function Toolbar(props) {
+		// Toolbar 组件接受一个额外的“theme”属性，然后传递给 ThemedButton 组件。
+		// 如果应用中每一个单独的按钮都需要知道 theme 的值，这会是件很麻烦的事，
+		// 因为必须将这个值层层传递所有组件。
+		return (
+		  <div>
+			<ThemedButton theme={props.theme} />
+		  </div>
+		);
+	  }
+	  
+	class ThemedButton extends React.Component {
+		render() {
+		  return <Button theme={this.props.theme} />;
+		}
+	  }
+
+	const btnColor = 
+	class Button extends React.Component {
+		var btnColor = this.props.theme
+		render() {
+		  return <button style="background-color:" {{this.props.theme}}>click</button>
+		}
+	  }
+	  
+	ReactDOM.render(
+	<App />,
+	document.getElementById('example')
+	);
+</script>
+
+</body>
+</html>

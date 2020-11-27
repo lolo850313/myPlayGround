@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        下拉菜单<select name="" id="">
+            <option value="">点击</option>
+            <option value="">action</option>
+            <option value="">another action</option>
+            <option value="">something else here</option>
+            <option value="">sperate link</option>
+        </select>
+    </div>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                
+            },
+            methods: {
+                longpress(){
+                    this.text = "长按"
+                    alert("长按")
+                }
+            },
+
+        })
+    </script>
+</body>
+</html>

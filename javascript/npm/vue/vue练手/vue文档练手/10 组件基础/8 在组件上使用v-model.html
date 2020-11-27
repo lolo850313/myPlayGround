@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+</head>
+    <body>  
+        <div id="blog-posts-events-demo">
+                <!-- <input type="text" v-model="searchText"> -->
+                <!-- 等价于： -->
+                <input type="text" 
+                    v-bind:value="searchText"
+                    v-on:input="searchText = $event.target.value">
+                <p>{{ searchText }}</p>  
+                <!-- 当用在组件上，v-model如下-->
+                <custom-input
+                    v-bind:value="searchText1"
+                    v-on:input="searchText1 = $event"
+                ></custom-input>
+                <p>{{ searchText1 }}</p>
+            </div>   
+</body>
+<script type ="text/javascript">
+    // 为了让组件上的v-model正常工作，组件内的input必须：
+    // 将其value特性绑定到一个名叫value的prop上，在其input事件被触发时，将新的值
+    // 通过自定义的input事件抛出
+    Vue.component('custom-input', {
+        props:['value'],
+        template:''
+    })
+
+    new Vue({
+        el :"#blog-posts-events-demo",
+        data:{
+            posts:[
+                            ],
+            searchText : "",
+            searchText1 : "",
+        }
+    })
+</script>
+</html>
+
+ 

@@ -1,0 +1,109 @@
+<html>
+<head>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<style>
+  html, body {
+    height: 100%;
+    color: #61DAFB;
+    background: #2D2D2D;
+  }
+  
+  h1 {
+    margin: 20px 0 15px 0;  
+  }
+  
+  #main {
+    width: 600px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  
+  ul {
+    list-style: none;
+  }
+  
+  ul>li:hover {
+    background-color: #F5F5F5;
+  }
+  
+  .form-inline .form-control {
+    width: 50%;
+    margin-left: 80px;
+  }
+  
+  .done {
+    color: red;
+    text-decoration: line-through;
+  }
+  
+  .undone {
+    color: #61DAFB;
+  }
+  
+  .icon {
+    margin: 6px 10px 6px 0;
+  }
+  
+</style>
+<body>
+    <div id="app"></div>
+<script type="text/babel">
+/*
+Todo app structure
+
+TodoApp
+	- TodoHeader
+	- TodoList
+    - TodoListItem #1
+		- TodoListItem #2
+		  ...
+		- TodoListItem #N
+	- TodoForm
+*/
+class TodoList extends React.Component{
+  constructor(props){
+    super(props)
+  }
+  render(){
+    return (
+      <ul>
+        {this.props.value.map(function(item){
+        return(
+            <li key={item.id}><span>{item}</span><button>X</button></li>
+        )  
+      })}
+        
+      </ul>
+    )
+  }
+}
+class App extends React.Component{
+  constructor(props){
+    super(props)
+    this.state = {
+      data : [11,22,33],
+      text : "11"
+    }
+  }
+  render(){
+    return (
+      <div>
+        <h1>Todo list</h1>
+        <TodoList  value = {this.state.data}/>
+        <form action="">
+          <input type="text" value={this.state.text}/>
+          <button>add</button>
+        </form>
+      </div>
+    )
+  }
+}
+ReactDOM.render(
+  <App />, 
+  document.getElementById("app"))
+</script>
+</body>
+</html>

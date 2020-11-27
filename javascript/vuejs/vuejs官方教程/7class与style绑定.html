@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+    <div id="app">
+        <div v-bind:class="{active : isActive,green: isGreen}" 
+        style="width: 200px; height:200px; text-align:center; line-height: 200px;">
+            hi vue
+        </div>
+    </div>
+<script type="text/javascript">
+    var vm = new Vue({
+        el : "#app",
+        data : {
+            isActive: true,
+            isGreen:true,
+        },
+    })
+vm.msg = "hi..."
+
+</script>
+<style>
+    .green{color:green;}
+    .test{font-size: 100px;}
+    .active{background: red;}
+</style>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+</head>
+    <body>  
+        <div id="example">
+            <input type="text" v-model="parentMsg">
+            <br>
+            <!-- 传递一个JavaScript，则需要v-bind，从而他能被当作JavaScript表达式计算，即结果为2 -->
+            <child v-bind:my-message = "1+1"></child>
+            <br>
+            <!-- 因为他是一个字面量prop，他的值是字符串，而不是一个数值，所有结果是1+1 -->
+            <child my-message = "1+1"></child>
+        </div>        
+    </body>
+<script type ="text/javascript">
+    Vue.component('child', {
+        props:['myMessage'],
+        template:'<span>{{ myMessage }}</span>',        
+    })
+
+    new Vue({
+        el:'#example',
+        data:{
+            parentMsg:'Message from parent'
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+</head>
+    <body>  
+        <div id="components-demo">
+              <blog-post 
+                v-for="(post) in posts" 
+                v-bind:key="post.id" 
+                v-bind:post="post">
+              </blog-post>         
+        </div>  
+   
+</body>
+<!-- 从父组件中的data中的posts属性传到子组件中 -->
+<script type ="text/javascript">
+    Vue.component('blog-post', {
+        props:['post'],
+        template:`
+        <div class="blog-post">\
+            <h3>{{ post.title}}</h3>\
+            <div v-html="post.content"></div>\
+        </div>\
+        `
+    })
+
+    new Vue({
+        el :"#components-demo",
+        data:{
+            posts:[
+                { id: 1, title: 'My journey with Vue', content: '...content...' },
+                { id: 2, title: 'Blogging with Vue', content: '...content...' },
+                { id: 3,title: 'Why Vue is so fun', content: '...content...' },
+            ]              
+        }
+    })
+</script>
+</html>

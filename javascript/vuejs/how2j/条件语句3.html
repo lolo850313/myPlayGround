@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Editor</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css">
+        .red{
+            background : red
+        }
+        .blue{
+            background : blue
+        }
+        .grey{
+            background : grey
+        }
+        .green{
+            background : green
+        }
+        div {
+            width: 100px;
+            cursor:pointer;
+        }
+        * {
+            margin: 0 auto;
+            text-align:center;
+            line-height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="handle">换隐藏显示</button>
+        <p  v-if="show">默认此条可见</p>
+        <button v-on:click="lotto">彩票</button>
+        <p  v-if="lotto_show">谢谢惠顾！</p>
+        <p  v-else>500w</p>
+
+        <button v-on:click="carre">投胎</button>
+        <p v-if="number > 80">公务员</p>
+        <p v-else-if="number >60">工程师</p>
+        <p v-else>清洁工</p>
+    </div>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                show: true,
+                lotto_show: true,
+                number:0,
+            },
+            methods: {
+                handle: function(){
+                    this.show = !this.show
+                },
+                lotto: function(){
+                    this.lotto_show = Math.random() > 0.1
+                },
+                carre:function(){
+                    this.number = Math.random() *100
+                },
+            },
+        })
+        
+
+
+    </script>
+</body>
+
+</html>

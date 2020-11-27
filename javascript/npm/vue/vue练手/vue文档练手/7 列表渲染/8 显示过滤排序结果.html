@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+</head>
+<body>
+    <ul id="example-2">
+        <!-- <li v-for="(n) in evenNumbers">
+            {{n}}
+        </li> -->
+        <li v-for="(n) in even(Numbers)">
+            {{n}}
+        </li>
+    </ul>
+</body>
+<script type ="text/javascript">
+
+var vm = new Vue({
+    el:"#example-2",
+    data:{
+        numbers : [1,2,3,4,5,6],
+        userProfile:{
+            name: 'anika'
+        }
+    },
+    // computed:{
+    //     evenNumbers:function () {
+    //         return this.numbers.filter(function (number) {
+    //             return number % 2 === 0
+    //         })
+    //     }
+    // }
+
+    // 在computed不适用时（vfor循环中），可以使用method方法
+    methods:{
+        even : function (numbers){
+            return numbers.filter(function (number) {
+                return number % 2 ===0                
+            })
+        }
+    }
+})
+</script>
+</html>

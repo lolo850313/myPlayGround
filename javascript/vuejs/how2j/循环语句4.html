@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Editor</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css">
+        table tr td{
+            border:1px solid gray;
+        }
+        table{
+            border-collapse:collapse;
+            width:300px;
+        }
+        tr.firstline{
+            background-color: rgb(92, 77, 77);
+        }
+        * {
+            margin: 0 auto;
+            text-align:center;
+            line-height: 40px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <table>
+            <thead>
+                <tr class="firstline">
+                    <td>index</td>
+                    <td>name</td>
+                    <td>hp</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(hero, index) in heros" :key="index">
+                    <td>{{index + 1}}</td>
+                    <td>{{hero.name}}</td>
+                    <td>{{hero.hp}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div v-for="(i, index) in 10" :key="index">
+            {{i}}
+        </div>
+    </div>
+    <script>
+        var heroInfo = [
+            {name:"盖伦", hp: 341},
+            {name:"提莫", hp: 225},
+            {name:"安妮", hp: 427},
+            {name:"死歌", hp: 893},
+        ]
+        new Vue({
+            el:"#app",
+            data:{
+                heros : heroInfo
+            },
+        })
+        
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Editor</title>
+    <script src="https://how2j.cn/study/vue.min.js"></script>
+	<script src="http://how2j.cn/study/vue-router.min.js"></script>
+    <style>
+		a{
+		  text-decoration: none;
+		}
+		a.router-link-active{
+		/*   color:blue; */
+		  background-color: lightGray;
+		}
+		div.menu{
+			border:1px solid gray;
+			float:left;
+		}
+		div.menu a{
+			display:block;
+		}
+		 
+		div.workingRoom{
+			margin-left:100px;
+		}
+		 
+		div#app{
+			width:500px;
+			padding:10px;
+			margin:10px auto;
+		}
+	</style>
+
+	<div id="div1">
+		<div class="menu">
+			<router-link to="/user">用户管理</router-link>
+			<router-link to="/product">产品管理</router-link>
+			<router-link to="/order">订单管理</router-link>
+		</div>
+		<div class="workingRoom">
+			<router-view></router-view>
+		</div>
+	</div>
+
+	<script>
+		var user = {
+			template:'<p>用户管理页面的内容</p>'
+		}
+		var second = {
+			template:'<p>产品管理页面的内容</p>'
+		}
+		var order = {
+			template:'<p>订单管理页面的内容</p>'
+		}
+
+		var routes =[
+			{path:"/", redirect:"/user"},
+			{path:"/user", component:user},
+			{path:"/product", component:second},
+			{path:"/order", component:order},
+		]
+		
+		const router = new VueRouter({
+			routes: routes
+		})
+		new Vue({
+			el: '#div1',
+			router
+		})
+	</script>
+
+</body>
+
+</html>

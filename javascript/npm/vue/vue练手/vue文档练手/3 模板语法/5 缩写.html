@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- v-bind缩写为： -->
+        <a href="" v-bind:href="url">...</a>
+        <a href="" :href="url">...</a>
+        <!-- v-on缩写为@ -->
+        <a href="" v-on:click="doSomething"></a>
+        <a href="" @click="doSomething"></a>
+
+
+    </div>
+</body>
+<script type ="text/javascript">
+var vm =new Vue({
+    el : "#app",
+    data :{isButtonDisabled : null,
+            seen : false},
+    methods : {
+        makeSeen:function(){
+            this.seen = true
+        }
+    },
+})
+
+// vm.$el vm.$data 可以在网页中调出，vm.isButtonDisabled vm.seen 可以在网页中调出
+// vm.$methods, vm.#app不能在网页中调出
+</script>
+</html>

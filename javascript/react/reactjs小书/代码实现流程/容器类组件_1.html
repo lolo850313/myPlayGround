@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Hello React!</title>
+<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        class Card  extends React.Component {
+            render() {
+                return (
+                    <div className="card">
+                        <div className="card-content">
+                            {this.props.content}
+                        </div>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(
+            <Card  content={
+                <div>
+                    <h2>React.js 小书</h2>
+                    <div>开源、免费、专业、简单</div>
+                    订阅: <input />
+                </div>
+            } />,
+            document.getElementById("root")
+        )
+
+
+    </script>
+</body>
+</html>

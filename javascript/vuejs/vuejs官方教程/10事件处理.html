@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="counter += 1">数值：{{counter}}</button>
+        <button v-on:dblclick="greet('abs',$event)">Greet</button>
+    </div>
+
+    
+<script type="text/javascript">
+    var vm = new Vue({
+        el : "#app",
+        data : {
+            counter:0,
+            name:"vue"
+        },
+        methods: {
+            greet : function(str,e){
+                // alert('hi');
+                // alert(str)
+                // alert(this.name);
+                console.log(e)
+            }
+        },
+    })
+vm.msg = "hi..."
+
+</script>
+<style>
+    .green{color:green;}
+    .test{font-size: 100px;}
+    .active{background: red;}
+</style>
+</body>
+</html>

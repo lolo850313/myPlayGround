@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+</head>
+<body>
+    <ul id="example-2">
+        <li v-for="item of items">
+            {{parentMessage}} - {{index}} - {{item}}
+        </li>
+    </ul>
+</body>
+<script type ="text/javascript">
+// vue不能检测变动的数组。可通过以下2种方式实现和vm.items[indexOfItem] = newValue
+// 相同的效果，同时触发状态更新
+// Vue.set(vm.items, indexOfItem, newValue)
+// vm.items.splice(indexOfItem, 1, newValue)
+// 也可使用vm.$set实例方法，该方法是全局方法Vue.set的一个别名
+// vm.set(vm.items, indexOfItem, newValue)
+
+// 改变数组长度
+// vm.items.splice(newLength)
+var vm = new Vue({
+    el:"#example-2",
+    data:{
+        parentMessage : 'Parent',
+        items:["a", "b", "c"]
+    },   
+})
+</script>
+</html>

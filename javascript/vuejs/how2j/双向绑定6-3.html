@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Editor</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css">
+    table tr td{
+        border:1px solid gray;
+        padding:10px;
+        
+    }
+    table{
+        border-collapse:collapse;
+        width:800px;
+        table-layout:fixed;
+    }
+    tr.firstLine{
+        background-color: lightGray;
+    }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <table>
+            <thead>
+                <tr>
+                    <td>视图类型</td>
+                    <td>输入数据</td>
+                    <td>绑定到Vue上的数值</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>单行文本</td>
+                    <td>
+                        <input type="text" v-model.lazy="msg1">
+                    </td>
+                    <td>{{msg1}}</td>
+                </tr>
+                <tr>
+                    <td>单行文本</td>
+                    <td>
+                        <input type="text" v-model="msg2">
+                    </td>
+                    <td>{{msg2}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <table>
+            <thead>
+                <tr>
+                    <td>视图类型</td>
+                    <td>输入数据</td>
+                    <td>绑定到Vue上的数值</td>
+                    <td>数值类型</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>单行文本</td>
+                    <td>
+                        <input type="number" v-model="msg3">
+                    </td>
+                    <td>{{msg3}}</td>
+                    <td>{{typeof (msg3)}}</td>
+                </tr>
+                <tr>
+                    <td>单行文本</td>
+                    <td>
+                        <input type="number" v-model.number="msg4">
+                    </td>
+                    <td>{{msg4}}</td>
+                    <td>{{typeof (msg4)}}</td>
+                </tr>
+
+                <tr>
+                    <td>单行文本</td>
+                    <td>
+                        <input type="text" v-model.trim="msg5">
+                    </td>
+                    <td>{{msg5}}</td>
+                    <td>{{msg5}}</td>
+                </tr>
+            </tbody>
+        </table>
+            
+    </div>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                msg1 : "",
+                msg2 : "",
+                msg3 : "",
+                msg4 : "",
+                msg5 : ""
+            },
+            methods: {
+            }
+        })
+    </script>
+</body>
+
+</html>

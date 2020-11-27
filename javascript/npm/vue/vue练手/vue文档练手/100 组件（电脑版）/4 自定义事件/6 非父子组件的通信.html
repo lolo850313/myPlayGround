@@ -1,0 +1,35 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+</head>
+    <body>  
+
+    </body>
+<script type ="text/javascript">
+    // 非父子关系的两个组件之间也需要通信。简单的场景下，可以使用一个空的vue实例作为事件总线。
+
+    var bus = new Vue()
+
+    // 触发组件A中的事件
+    bus.$emit('id-selected', 1)
+
+    // 在组件B创建的钩子中监听事件
+    bus.$on('id-selected', function(id){
+        // ...
+                })
+
+
+    new Vue({
+        el:'#currency',
+        data:{
+            price:''
+        }
+    })
+</script>
+</html>

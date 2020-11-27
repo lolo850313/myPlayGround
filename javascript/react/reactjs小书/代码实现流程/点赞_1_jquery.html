@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Hello React!</title>
+</head>
+<body>
+    <div class="wrapper">
+        <button class="like-btn">
+            <span class="like-text">点赞</span>
+            <span>👍</span>
+        </button>
+    </div>
+    <script>
+        const button = document.querySelector(".like-btn")
+        const buttonText = button.querySelector(".like-text")
+        console.log(button, buttonText)
+        let isLiked = false
+        button.addEventListener("click", ()=>{
+            isLiked = !isLiked
+            if(isLiked){
+                buttonText.innerHTML = "取消"
+            }else{
+                buttonText.innerHTML = "点赞"
+            }
+        }, false)
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Editor</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style type="text/css">
+    </style>
+</head>
+<body>
+    <div id="app">
+        <p v-xart>好好学习，天天向上</p>
+        <p v-xart1='{text:"ddd", color:"blue"}'>好好学习，天天向上</p>
+        <!-- <p v-xart1='blue'>好好学习，天天向上</p> -->
+    </div>
+    <script>
+        Vue.directive("xart", function (el) {
+            el.innerHTML = el.innerHTML + '(xart)'
+            el.style.color = 'pink'
+        })
+
+        Vue.directive("xart1", function (el,binding) {
+            el.innerHTML = el.innerHTML + binding.value.text +'(xart)'
+            el.style.color = binding.value.color
+        })
+
+        new Vue({
+            el:"#app",
+            data:{
+                
+            },
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Hello React!</title>
+<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+
+<div id="root"></div>
+<script type="text/babel">
+	class TodoApp extends React.Component {
+		constructor(props){
+			super(props)
+			this.state = {
+				text: "",
+				items : []
+			}
+			this.handleChange  = this.handleChange.bind(this)
+			this.handleSumbit  = this.handleSumbit.bind(this)
+		}
+
+		handleChange(event){
+			this.setState({
+				text : event.target.value
+			})
+		}
+
+		handleSumbit(event) {
+			event.preventDefault()
+			if(this.state.text.length == 0){
+				return
+			}
+			const newItems = {
+				text :this.state.text,
+				id : Date.now()
+			}
+			this.setState((state) => ({
+				items:state.items.concat(newItems),
+				text : ""
+			}))
+
+		}
+
+		render(){
+			return (
+				<div>
+					<h1>TODO</h1>
+					<TodoList items={this.state.items} />
+					<form onClick={this.handleSumbit}>
+						<label htmlFor="new-todo">What needs to be done?</label>
+						<input id="new-todo" onChange={this.handleChange} value={this.state.text} />
+						<button>Add #{this.state.items.length+1}</button>
+					</form>
+					
+				</div>
+			)
+		}	
+	}
+
+	class TodoList extends React.Component {
+		render () {
+			return (
+				<ul>
+					{this.props.items.map( (item) => {
+						return (
+							<li key={item.id} >{item.text}</li>
+						)}
+					)}
+				</ul>
+			)
+		}
+	}
+	
+	ReactDOM.render(
+	  <TodoApp />,
+	  document.getElementById('root')
+	);
+	
+	  
+</script>
+
+</body>
+</html>

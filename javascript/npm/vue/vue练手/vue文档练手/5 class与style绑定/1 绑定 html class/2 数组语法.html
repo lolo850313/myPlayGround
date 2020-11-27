@@ -1,0 +1,27 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- <div v-bind:class="[activeClass,errorClass]">11</div> -->
+        <!-- 可以在数组语法中使用对象语法 -->
+        <div v-bind:class="[{active:isActive}, errorClass]"></div>
+    </div>
+</body>
+<script type ="text/javascript">
+var vm = new Vue({
+    el:"#app",
+    data:{
+        isActive: "active",
+        errorClass: "text-danger",
+    },
+})
+</script>
+</html>

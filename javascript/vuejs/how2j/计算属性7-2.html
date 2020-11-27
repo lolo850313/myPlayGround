@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Editor</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style type="text/css">
+    table tr td{
+        border:1px solid gray;
+        padding:10px;
+        
+    }
+    table{
+        border-collapse:collapse;
+        width:800px;
+        table-layout:fixed;
+    }
+    tr.firstLine{
+        background-color: lightGray;
+    }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <table>
+            <thead>
+                <tr class="firstLine">
+                    <td>人民币</td>
+                    <td>美元</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td align="center" colspan="2">
+                        汇率：<input type="number" v-model.number="huilv" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        ￥: <input type="number" v-model.number="rmb" />
+                    </td>
+                    <td align="center">
+                        $:{{dollar}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>            
+    </div>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                huilv : 6.4,
+                rmb : 0,
+            },
+            methods: {
+            },
+            computed: {
+                dollar : function(){
+                    return this.rmb / this.huilv
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

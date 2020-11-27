@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+</head>
+<body>
+    <!-- 事件修饰符有.stop .prevent .capture .self .once .passive -->
+    <div id="example-3">
+        <!-- 阻止事件继续传播 -->
+        <a href="" v-on:click.stop="doThis"></a>
+
+        <!-- 提交事件不再重载页面 -->
+        <form href="" v-on:submit.prevent="onSubmit"></form>
+        
+        <!-- 修饰符可以串联 -->
+        <a href="" v-on:click.stop.prevent="doThat"></a>
+        
+        <!-- 添加事件监听器使用事件捕获模式
+        即元素自身触发的事件先在此处处理，然后交由内部元素进行处理 -->
+        <a href="" v-on:click.capture="doThis"></a>
+
+        <!-- 只当在event.target是当前元素自身时触发处理函数
+        即事件不是从内部元素触发的 -->
+        <a href="" v-on:click.self="doThat"></a>
+
+        <!-- 使用修饰符时顺序很重要。比如
+        v-on:click.prevent.self会阻止所有的点击
+        v-on:click.self.prevent只会阻止对元素自身的点击 -->
+        
+        <!-- 点击事件只会触发一次 -->
+        <a href="" v-on:click.once="doThis"></a>
+
+        <!-- 对应addEventListener中的passive提供了.passive 
+        滚动事件的默认行为（即滚动行为）将会立即触发，而不会等待
+        `onScroll`完成，这其中包含`event.preventDefault()`的
+        情况-->
+        <div v-on:scroll.passive="onScroll"></div>
+        <!-- 不要把passive和prevent一起使用，因为prevent会被忽略 -->
+    
+    </div>
+</body>
+<script type ="text/javascript">
+    var example3 = new Vue({
+        el: '#example-3',
+        methods:{
+            say:function(message){
+                alert(message)
+            },
+            warn:function (message, event) {
+               if(event) event.preventDefault()
+               alert(message)
+            }
+        }
+    })
+</script>
+</html>
