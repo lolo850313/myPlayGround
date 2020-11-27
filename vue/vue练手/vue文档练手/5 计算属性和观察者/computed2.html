@@ -1,0 +1,27 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{ fullName }}
+    </div>
+</body>
+<script type ="text/javascript">
+var vm = new Vue({
+    el : "#app",
+    data : {"firstName": "hello",
+            "lastName": "Bar",
+},
+    computed:{
+        fullName:function () {
+                return this.firstName + " " + this.lastName
+        }
+    }
+})
+</script>
+</html>
