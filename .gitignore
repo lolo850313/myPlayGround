@@ -1,19 +1,18 @@
 *.pyc
 *.json
 .vscode/settings.json
-*.DS_Store
-runnoob/.idea/workspace.xml
+
 *.xml
 
 .code-workspace
 node_modules
 .history/*
 */settings.json
-python/flasky
+
 winGit.code-workspace
 .vscode/*
 .*
-winGit.code-workspace
+
 # Logs
 logs
 *.log
