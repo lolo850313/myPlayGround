@@ -1,22 +1,3 @@
-*.pyc
-*.json
-.vscode/settings.json
-
-*.xml
-
-.code-workspace
-node_modules
-.history/*
-*/settings.json
-
-winGit.code-workspace
-.vscode/*
-.*
-
-# Logs
-logs
-*.log
-npm-debug.log*
 
 # Runtime data
 pids
@@ -38,21 +19,11 @@ coverage
 # node-waf configuration
 .lock-wscript
 
-# Compiled binary addons (http://nodejs.org/api/addons.html)
-build/Release
-build
-
-# Dependency directories
-node_modules
-jspm_packages
-
 # Optional npm cache directory
 .npm
 
 # Optional REPL history
 .node_repl_history
-
-.DS_Store
 
 
 /.history/
@@ -61,6 +32,31 @@ jspm_packages
 
 /.idea/
 
+# dependencies  npm包文件
 /node_modules
+jspm_packages
 
+# production  打包文件
 /build
+build/Release
+
+# misc 
+.DS_Store
+
+npm-debug.log*
+
+# Windows:
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Python:
+*.py[cod]
+*.so
+*.egg
+*.egg-info
+dist
+build
+
+#java
+*.class
