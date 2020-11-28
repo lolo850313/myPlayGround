@@ -43,3 +43,19 @@ build/Release
 .DS_Store
 
 npm-debug.log*
+
+# Windows:
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Python:
+*.py[cod]
+*.so
+*.egg
+*.egg-info
+dist
+build
+
+#java
+*.class
