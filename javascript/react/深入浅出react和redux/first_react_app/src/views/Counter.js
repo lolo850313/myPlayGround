@@ -13,8 +13,9 @@ class Counter extends Component {
         
         this.onIncrement = this.onIncrement.bind(this)
         this.onDecrement = this.onDecrement.bind(this)
-        this.onChange = this.onChange.bind(this)
+        
         this.getOwnState = this.getOwnState.bind(this)
+        this.onChange = this.onChange.bind(this)
 
         this.state = this.getOwnState()
     }
@@ -24,6 +25,7 @@ class Counter extends Component {
             value : store.getState()[this.props.caption]
         }
     }
+
     onIncrement(){
         store.dispatch(Actions.increment(this.props.caption))
     }
@@ -31,29 +33,20 @@ class Counter extends Component {
     onDecrement(){
         store.dispatch(Actions.decrement(this.props.caption))
     }
-    onchange (){
+    onChange (){
         this.setState(this.getOwnState())
     }
 
     shouldComponentUpdate(nextProps, nextState) {
         return (nextProps.caption !== this.props.caption) || (nextState.value !== this.state.value)
     }
-    
+
     componentDidMount() {
         store.subscribe(this.onChange)
     }
 
     componentWillUnmount() {
         store.unsubscribe(this.onChange)
-    }
-
-    updateCount(isIncrement){
-        const previousValue = this.state.count
-        const newValue = isIncrement ? previousValue + 1 : previousValue - 1
-        this.setState({
-            count : newValue
-        })
-        this.props.onUpdate(newValue, previousValue)
     }
 
     render(){
