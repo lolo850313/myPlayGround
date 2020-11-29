@@ -28,7 +28,7 @@ class Summary extends Component {
     }
 
     shouldComponentUpdate(nextProps, nextState){
-        return nextState.sum != this.state.sum
+        return nextState.sum !== this.state.sum
     }
 
     componentDidMount() {

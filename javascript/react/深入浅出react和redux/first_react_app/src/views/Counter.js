@@ -1,4 +1,4 @@
-import React,{ PropTypes } from 'react';
+import React,{ Component ,PropTypes } from 'react';
 
 import * as Actions from '../Action.js'
 import store from '../Store.js';
@@ -11,10 +11,11 @@ class Counter extends Component {
     constructor(props){
         super(props)
         
-        this.onIncrementButton = this.onIncrementButton.bind(this)
-        this.onDecrementButton = this.onDecrementButton.bind(this)
+        this.onIncrement = this.onIncrement.bind(this)
+        this.onDecrement = this.onDecrement.bind(this)
         this.onChange = this.onChange.bind(this)
         this.getOwnState = this.getOwnState.bind(this)
+
         this.state = this.getOwnState()
     }
 
@@ -23,17 +24,21 @@ class Counter extends Component {
             value : store.getState()[this.props.caption]
         }
     }
-    onIncrementButton(){
+    onIncrement(){
         store.dispatch(Actions.increment(this.props.caption))
     }
 
-    onDecrementButton(){
+    onDecrement(){
         store.dispatch(Actions.decrement(this.props.caption))
     }
     onchange (){
         this.setState(this.getOwnState())
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        return (nextProps.caption !== this.props.caption) || (nextState.value !== this.state.value)
+    }
+    
     componentDidMount() {
         store.subscribe(this.onChange)
     }
@@ -56,10 +61,10 @@ class Counter extends Component {
         const value = this.state.value
         return (
             <div>
-                <button style={buttonStyle} onClick={this.onIncrementButton}>
+                <button style={buttonStyle} onClick={this.onIncrement}>
                     +
                 </button>
-                <button style={buttonStyle} onClick={this.onDecrementButton}>
+                <button style={buttonStyle} onClick={this.onDecrement}>
                     -
                 </button>
                 <span>{caption} count : {value}</span>

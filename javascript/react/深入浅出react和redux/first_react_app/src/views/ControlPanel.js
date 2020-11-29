@@ -9,7 +9,7 @@ const style = {
 class ControlPanel extends Component {
     render() {
         return (
-            <div>
+            <div style={style}>
                 <Counter caption="First"  />
                 <Counter caption="Second" />
                 <Counter caption="Third"  />
