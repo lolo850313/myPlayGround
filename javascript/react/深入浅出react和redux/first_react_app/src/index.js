@@ -2,9 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import ControlPanel from './views/ControlPanel';
+import Provider from './Provider'
+import store from './Store'
 
 ReactDOM.render(
-    <ControlPanel />,
+  <Provider store={store}>
+    <ControlPanel />
+  </Provider>,
   document.getElementById('root')
 );
 

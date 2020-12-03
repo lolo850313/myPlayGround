@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import CounterContainer from './CounterContainer'
-import Summary from './Summary'
+import SummaryContainer from './SummaryContainer'
 
 const style = {
     margin: '20px'
@@ -14,7 +14,7 @@ class ControlPanel extends Component {
                 <CounterContainer caption="Second" />
                 <CounterContainer caption="Third"  />
                 <hr />
-                <Summary />
+                <SummaryContainer />
             </div>
             
         )

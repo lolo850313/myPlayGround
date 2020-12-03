@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-
+import Summary from './Summary'
 import store from '../Store.js';
 
-class Summary extends Component {
+class SummaryContainer extends Component {
     constructor(props){
         super(props)
 
@@ -40,11 +40,10 @@ class Summary extends Component {
     }
 
     render() {
-        const sum = this.state.sum
         return (
-            <div>total count : { sum } </div>
+            <Summary  sum={this.state.sum} />
         )
     }
 }
 
-export default Summary
+export default SummaryContainer

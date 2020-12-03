@@ -4,9 +4,9 @@ import Counter from './Counter'
 import * as Actions from '../Action.js'
 import store from '../Store.js';
 
-const buttonStyle = {
-    margin: '10px'
-  }
+// const buttonStyle = {
+//     margin: '10px'
+//   }
 
 class CounterContainer extends Component {
     constructor(props){
