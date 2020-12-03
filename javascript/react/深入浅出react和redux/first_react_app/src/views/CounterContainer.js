@@ -1,4 +1,4 @@
-import React,{ Component } from 'react';
+import React,{ Component, PropTypes } from 'react';
 import Counter from './Counter'
 
 import * as Actions from '../Action.js'
@@ -9,8 +9,8 @@ import store from '../Store.js';
 //   }
 
 class CounterContainer extends Component {
-    constructor(props){
-        super(props)
+    constructor(props, context){
+        super(props, context)
         
         this.onIncrement = this.onIncrement.bind(this)
         this.onDecrement = this.onDecrement.bind(this)
@@ -23,7 +23,7 @@ class CounterContainer extends Component {
 
     getOwnState () {
         return {
-            value : store.getState()[this.props.caption]
+            value : this.context.store.getState()[this.props.caption]
         }
     }
 
@@ -59,6 +59,8 @@ class CounterContainer extends Component {
         )
     }
 }
-
+CounterContainer.contextTypes = {
+    store : PropTypes.object
+}
 
 export default CounterContainer

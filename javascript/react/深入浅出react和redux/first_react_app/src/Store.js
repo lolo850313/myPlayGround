@@ -7,5 +7,6 @@ const initValues = {
     'Third' : 20
 }
 
-const stores = createStore(reducer, initValues)
-export default stores
+const store = createStore(reducer, initValues)
+
+export default store

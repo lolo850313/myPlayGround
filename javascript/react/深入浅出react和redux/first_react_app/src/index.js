@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+
 import ControlPanel from './views/ControlPanel';
-import Provider from './Provider'
+import './index.css';
+
 import store from './Store'
+import Provider from './Provider'
 
 ReactDOM.render(
   <Provider store={store}>
