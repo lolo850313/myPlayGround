@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"maven.view": "hierarchical",
+		"python.pythonPath": "C:\\Users\\lolo\\AppData\\Local\\Programs\\Python\\Python38\\python.exe"
+	}
+}
