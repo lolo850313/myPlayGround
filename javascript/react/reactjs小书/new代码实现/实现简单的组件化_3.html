@@ -1,0 +1,38 @@
+<html>
+<head>
+</head>
+<body>
+    <div class="wrapper">
+    </div>
+<script>
+    const createDOMFromString = (domString) => {
+        const div = document.createElement('div')
+        div.innerHTML = domString
+        return div
+    }
+
+    class LikeButton {
+        render(text){
+            this.el = createDOMFromString(`
+            <button class='like-button'>
+                <span class='like-text'> `+ text +`</span>
+                <span>👍</span>
+            </button>
+            `)
+            this.el.addEventListener('click', () => console.log('click') , false)
+            return this.el
+        }
+    }
+    const wrapper = document.querySelector(".wrapper")
+    const likeButton1 = new LikeButton()
+    wrapper.append(likeButton1.render("赞同"))
+
+    const likeButton2 = new LikeButton()
+    wrapper.append(likeButton2.render("取消"))
+
+
+
+    
+</script>
+</body>
+</html>

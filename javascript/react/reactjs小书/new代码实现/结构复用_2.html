@@ -1,0 +1,30 @@
+<html>
+<head>
+</head>
+<body>
+    <div class="wrapper">
+    </div>
+<script>
+    class LikeButton {
+        render(text){
+            return `
+                <button class="like-btn">
+                    <span class=".like-text">` + text + `</span>
+                    <span>👍</span>
+                </button>
+            `
+        }
+    }
+    const wrapper = document.querySelector(".wrapper")
+    const likeButton1 = new LikeButton()
+    wrapper.innerHTML = likeButton1.render("点赞")
+
+    const likeButton2 = new LikeButton()
+    wrapper.innerHTML += likeButton2.render("取消")
+
+
+
+    
+</script>
+</body>
+</html>

@@ -14,13 +14,13 @@
     let isLike = false
 
     button.addEventListener('click', () => {
-        isLike != isLike
+        isLike = !isLike
         if(isLike){
-            button.innerHTML = "取消"
+            button.innerHTML = "取消<span>👍</span>"
         }else{
-            button.innerHTML = "取消"
+            button.innerHTML = "赞同<span>👍</span>"
         }
-    })
+    }, false)
 
 </script>
 </body>
