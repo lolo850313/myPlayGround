@@ -1,0 +1,100 @@
+<html>
+<head>
+</head>
+<body>
+    <div class="wrapper">
+    </div>
+<script>
+    const createDOMFromString = (domString) => {
+        const div = document.createElement('div')
+        div.innerHTML = domString
+        return div
+    }
+//将component挂在wrapper元素下
+    const mount = (component, wrapper) => {
+        wrapper.appendChild(component._renderDOM())
+        component.onStateChange = (oldEl, newEl) => {
+            wrapper.insertBefore(newEl, oldEl)
+            wrapper.removeChild(oldEl)
+        }
+    }
+
+    class Component {
+        constructor(props = { }){
+            this.props = props
+        }
+        setState(state){
+            const oldEl = this.el
+            this.state = state
+            this._renderDOM()
+            if(this.onStateChange) {
+                this.onStateChange(oldEl, this.el)
+            }
+        }
+        _renderDOM(){
+            this.el = createDOMFromString(this.render())
+            //如果组件有onClick函数，则使用addEventListener将onClick函数注册到click事件上
+            if(this.onClick) {
+                this.el.addEventListener('click', this.onClick.bind(this), false)
+            }
+            return this.el
+        }
+    }
+
+
+    class LikeButton extends Component{
+        constructor(props){
+            super(props)
+            this.state = {
+                isLiked : false
+            }
+        }
+        
+        onClick(){
+            this.setState({
+                isLiked : !this.state.isLiked
+            })
+        }
+
+        render(){
+            return (`
+            <button class='like-button'>
+                <span class='like-text'>${this.state.isLiked ? "取消" : "点赞"}</span>
+                <span>👍</span>
+            </button>
+            `)
+        }
+    }
+
+    class RedBlueLikeButton extends Component{
+        constructor(props){
+            super(props)
+            this.state = {
+                bgColor : 'red',
+                
+            }
+        }
+        
+        onClick(){
+            this.setState({
+                bgColor: 'blue',
+            })
+        }
+
+        render(){
+            return (`
+            <div style='color: ${this.state.bgColor};' >${this.state.bgColor}</div>
+            `)
+        }
+    }
+
+    const wrapper = document.querySelector(".wrapper")
+    mount(new RedBlueLikeButton({ bgColor: 'red' }), wrapper)
+    mount(new LikeButton(), wrapper)
+
+
+
+    
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<html>
+<head>
+</head>
+<body>
+    <div class="wrapper">
+    </div>
+<script>
+    const createDOMFromString = (domString) => {
+        const div = document.createElement('div')
+        div.innerHTML = domString
+        return div
+    }
+
+    class LikeButton {
+        constructor(){
+            this.state = {
+                isLiked : false
+            }
+        }
+
+        setState(state){
+            const oldEl = this.el
+            this.state = state
+            this.el = this.render()
+            //如果类有onStateChange方法，则
+            if(this.onStateChange) {
+                this.onStateChange(oldEl, this.el)
+            }
+        }
+        
+        changeLikeText(){
+            this.setState({
+                isLiked : !this.state.isLiked
+            })
+        }
+
+//${this.state.isLiked} 是模板字符串中的字符串插值
+        render(){
+            this.el = createDOMFromString(`
+            <button class='like-button'>
+                <span class='like-text'>${this.state.isLiked ? "取消" : "点赞"}</span>
+                <span>👍</span>
+            </button>
+            `)
+            this.el.addEventListener('click', this.changeLikeText.bind(this), false)
+            return this.el
+        }
+    }
+    const wrapper = document.querySelector(".wrapper")
+    const likeButton1 = new LikeButton()
+    wrapper.append(likeButton1.render())
+    likeButton1.onStateChange = (oldEl, newEl) => {
+        wrapper.insertBefore(newEl, oldEl)
+        wrapper.removeChild(oldEl)
+    }
+
+
+    const likeButton2 = new LikeButton()
+    wrapper.append(likeButton2.render())
+
+
+
+    
+</script>
+</body>
+</html>
