@@ -26,6 +26,7 @@
         setState(state){
             const oldEl = this.el
             this.state = state
+            //通过函数使得this.el重新render
             this._renderDOM()
             if(this.onStateChange) {
                 this.onStateChange(oldEl, this.el)
