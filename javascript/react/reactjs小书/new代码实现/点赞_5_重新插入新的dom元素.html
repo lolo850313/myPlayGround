@@ -22,6 +22,7 @@
             const oldEl = this.el
             this.state = state
             this.el = this.render()
+            //如果类有onStateChange方法，则
             if(this.onStateChange) {
                 this.onStateChange(oldEl, this.el)
             }
@@ -52,6 +53,7 @@
         wrapper.insertBefore(newEl, oldEl)
         wrapper.removeChild(oldEl)
     }
+
 
     const likeButton2 = new LikeButton()
     wrapper.append(likeButton2.render())
