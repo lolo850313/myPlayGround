@@ -1,17 +1,20 @@
-import React from 'react';
+import React ,{ Component }from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+
+class Header extends Component {
+  render() {
+    const word = 'is good'
+    return (
+      <div>
+        <h1 className={ word } htmlFor = { word }>react小书 { word }</h1>
+      </div>
+    )
+  }
+}
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+    <Header />,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
