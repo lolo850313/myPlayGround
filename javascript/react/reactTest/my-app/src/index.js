@@ -9,31 +9,26 @@ const users = [
 	{ username: 'Lucy', age: 20, gender: 'female' }
   ]
 
+class User extends Component {
+	render() {
+		const user = this.props.user
+		return (
+			<div key={this.props.id}>
+				<div>姓名 : {user.username}</div>
+				<div>年龄 : {user.age}</div>
+				<div>性别 : {user.gender}</div>
+				<hr/>
+			</div>
+		)
+	}
+}
 class Index extends Component {
-	constructor() {
-		super()
-		this.state = {
-			likeText : "已赞",
-			unLikeText : "赞"
-		}
-	}
-
-	handleClickOnChange () {
-		this.setState({
-			likeText: '取消',
-			unLikeText : "点赞"
-		})
-	}
 	render() {
 		return (
 				<div>
-					<LikeButton 
-					likeText={this.state.likeText} 
-					unLikeText={this.state.unLikeText} 
-					/>
-					<div>
-						<button onClick={this.handleClickOnChange.bind(this)} >修改 wordings</button>
-					</div>
+					{users.map( (user, id)=> 
+							<User user={user} key={id} />
+						)}
 				</div>
 		)
 	}
