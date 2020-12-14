@@ -3,10 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 class LikeButton extends Component {
-	constructor(props) {
-		super(props)
+	static defaultProps = {
+		likedText : '取消',
+		unLikedText : '点赞'
+	}
+	constructor() {
+		super()
 		this.state = {
-			isLike : true
+			isLike : false
 		}
 		this.handleClick = this.handleClick.bind(this)
 	}
@@ -14,22 +18,16 @@ class LikeButton extends Component {
 		this.setState({
 			isLike : !this.state.isLike
 		})
-		this.setState((e) => {
-			return {count : 0}
-		})
-		console.log(this.state.count)
-		this.setState((e) => {
-			return {count : e.count + 1}
-		})
-		console.log(this.state.count)
-		this.setState((e) => {
-			return {count : e.count + 2}
-		})
-		console.log(this.state.count)
+
+		if(this.props.onClick){
+			this.props.onClick()
+		}
 	}
-	render() {
+	render() {		
 		return (
-		<button onClick={this.handleClick}>{this.state.isLike? "赞同" : "取消"}👍</button>
+		<button onClick={this.handleClick}>
+			{this.state.isLike? this.props.likedText : this.props.unLikedText👍}
+		</button>
 		)
 	}
 }
@@ -38,7 +36,11 @@ class Index extends Component {
 	render() {
 		return (
 				<div>
-					<LikeButton />
+					<LikeButton 
+					 likedText='已赞'
+					 unLikedText = '赞'
+					 onClick = { ()=> console.log("clicked")}
+					 />
 					<LikeButton />
 				</div>
 		)
