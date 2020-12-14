@@ -18,30 +18,39 @@ class LikeButton extends Component {
 		this.setState({
 			isLike : !this.state.isLike
 		})
-
-		if(this.props.onClick){
-			this.props.onClick()
-		}
 	}
 	render() {		
 		return (
-		<button onClick={this.handleClick}>
-			{this.state.isLike? this.props.likedText : this.props.unLikedText👍}
-		</button>
+		<button onClick={this.handleClick}>{this.state.isLike? this.props.unLikeText : this.props.likeText}👍</button>
 		)
 	}
 }
 
 class Index extends Component {
+	constructor() {
+		super()
+		this.state = {
+			likeText : "已赞",
+			unLikeText : "赞"
+		}
+	}
+
+	handleClickOnChange () {
+		this.setState({
+			likeText: '取消',
+			unLikeText : "点赞"
+		})
+	}
 	render() {
 		return (
 				<div>
 					<LikeButton 
-					 likedText='已赞'
-					 unLikedText = '赞'
-					 onClick = { ()=> console.log("clicked")}
-					 />
-					<LikeButton />
+					likeText={this.state.likeText} 
+					unLikeText={this.state.unLikeText} 
+					/>
+					<div>
+						<button onClick={this.handleClickOnChange.bind(this)} >修改 wordings</button>
+					</div>
 				</div>
 		)
 	}
