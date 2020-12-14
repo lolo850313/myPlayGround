@@ -2,55 +2,30 @@ import React ,{ Component }from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-class LikeButton extends Component {
-	static defaultProps = {
-		likedText : '取消',
-		unLikedText : '点赞'
-	}
-	constructor() {
-		super()
-		this.state = {
-			isLike : false
-		}
-		this.handleClick = this.handleClick.bind(this)
-	}
-	handleClick() {
-		this.setState({
-			isLike : !this.state.isLike
-		})
-	}
-	render() {		
-		return (
-		<button onClick={this.handleClick}>{this.state.isLike? this.props.unLikeText : this.props.likeText}👍</button>
-		)
-	}
-}
+const users = [
+	{ username: 'Jerry', age: 21, gender: 'male' },
+	{ username: 'Tomy', age: 22, gender: 'male' },
+	{ username: 'Lily', age: 19, gender: 'female' },
+	{ username: 'Lucy', age: 20, gender: 'female' }
+  ]
 
 class Index extends Component {
-	constructor() {
-		super()
-		this.state = {
-			likeText : "已赞",
-			unLikeText : "赞"
-		}
-	}
-
-	handleClickOnChange () {
-		this.setState({
-			likeText: '取消',
-			unLikeText : "点赞"
-		})
-	}
 	render() {
+		const userElement = []
+		for(let user of users){
+			userElement.push(
+				<div>
+					<div>姓名 : {user.username}</div>
+					<div>年龄 : {user.age}</div>
+					<div>性别 : {user.gender}</div>
+					<hr/>
+				</div>
+			)
+		}
+
 		return (
 				<div>
-					<LikeButton 
-					likeText={this.state.likeText} 
-					unLikeText={this.state.unLikeText} 
-					/>
-					<div>
-						<button onClick={this.handleClickOnChange.bind(this)} >修改 wordings</button>
-					</div>
+					{userElement}
 				</div>
 		)
 	}
