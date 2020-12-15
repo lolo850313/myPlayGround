@@ -1,5 +1,5 @@
 import React ,{ Component }from 'react';
-// import Comment from './Comment'
+import Comment from './Comment'
 
 class CommentList extends Component {
 	render() {
@@ -10,11 +10,7 @@ class CommentList extends Component {
 		]
 		return (
 				<div>
-					{comments.map( (comment, i) => {return(
-						<div key={i}>
-							{comment.username} : {comment.content}
-						</div>
-					)})}
+					{comments.map( (comment, i) => <Comment key={i} comment={comment} /> )}
 					
 				</div>
 		)
