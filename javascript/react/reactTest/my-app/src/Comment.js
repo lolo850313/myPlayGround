@@ -8,8 +8,9 @@ class Comment extends Component {
 		return (
 			<div className="comment">
 				<div className="comment-user">
-					{this.props.comment.username} : {this.props.comment.content}
+					<span>{this.props.comment.username} : </span>
 				</div>
+				<p>{this.props.comment.content}</p>
 			</div>
 		)
 	}
