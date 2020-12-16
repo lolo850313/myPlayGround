@@ -7,87 +7,68 @@
 <body>
 	<div id="root"></div>
 <script type="text/babel">
-	class myEventEmitter {
-		constructor(){
-			this.eventMap = {}
+class myEventEmitter {
+	constructor(){
+		this.eventMap = {}
+	}
+
+	//type事件名称
+	on(type, handler) {
+		if(!handler instanceof Function){
+			throw new Error("请传入一个函数")
 		}
-	
-		//type事件名称
-		on(type, handler) {
-			if(!handler instanceof Function){
-				throw new Error("请传入一个函数")
-			}
-			if(!this.eventMap[type]){
-				this.eventMap[type] = []
-			}
-	
-			this.eventMap[type].push(handler)
+		if(!this.eventMap[type]){
+			this.eventMap[type] = []
 		}
-	
-		emit(type, params) {
-			if (this.eventMap[type]) {
-				this.eventMap[type].forEach( (handler, index) => {
-					handler(params)
-				});
-			}
-		}
-	
-		off(type, handler) {
-			if(this.eventMap[type]) {
-				this.eventMap[type].splice(this.eventMap[type].indexOf(handler)>>>0, 1)
-			}
+
+		this.eventMap[type].push(handler)
+	}
+
+	emit(type, params) {
+		if (this.eventMap[type]) {
+			this.eventMap[type].forEach( (handler, index) => {
+				handler(params)
+			});
 		}
 	}
-	// 注意这个 myEvent 是提前实例化并挂载到全局的，此处不再重复示范实例化过程
-	const myEvent = new myEventEmitter()
+
+	off(type, handler) {
+		if(this.eventMap[type]) {
+			this.eventMap[type].splice(this.eventMap[type].indexOf(handler)>>>0, 1)
+		}
+	}
+}
+
+// 注意这个 myEvent 是提前实例化并挂载到全局的，此处不再重复示范实例化过程
+const myEvent = new myEventEmitter()
 const globalEvent = window.myEvent
 
 class B extends React.Component {
-
-  // 这里省略掉其他业务逻辑
-
 	state = {
-
-	newParams: ""
-
+		newParams: ""
 	};
 
 	handler = (params) => {
-
-	this.setState({
-
-		newParams: params
-
-	});
-
-};
+		this.setState({
+			newParams: params
+			});
+	};
 
 	bindHandler = () => {
-
 		globalEvent.on("someEvent", this.handler);
-
 	};
 
 	render() {
-
-	return (
-
-		<div>
-
-			<button onClick={this.bindHandler}>点我监听A的动作</button>
-
-			<div>A传入的内容是[{this.state.newParams}]</div>
-
-		</div>
-
-	);
-
+		return (
+			<div>
+				<button onClick={this.bindHandler}>点我监听A的动作</button>
+				<div>A传入的内容是[{this.state.newParams}]</div>
+			</div>
+		);
 	}
 }
 
 class A extends React.Component {
-
-	// 这里省略掉其他业务逻辑
 	state = {
 		infoToB: "哈哈哈哈我来自A"
 	};
@@ -98,33 +79,24 @@ class A extends React.Component {
 	};
 
 	render() {
-
 		return <button onClick={this.reportToB}>点我把state传递给B</button>;
-
-	}
-
+		}
 	}
 
 	function App() {
-
-	return (
-
-		<div className="App">
-
-		<B />
-
-		<A />
-
-		</div>
-
-	);
-
+		return (
+			<div className="App">
+				<B />
+				<A />
+			</div>
+		);
 	}
 
 ReactDOM.render(
 	<App />,
 	document.getElementById('root')
 );
+
 </script>
 </body>
 </html>
