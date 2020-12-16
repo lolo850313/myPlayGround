@@ -51,7 +51,6 @@ class CommentInput extends Component {
 				<div className="comment-field-button">
 					<button onClick={this.handleSubmit} >发布</button>
 				</div>
-				
 			</div>
 				
 		)
