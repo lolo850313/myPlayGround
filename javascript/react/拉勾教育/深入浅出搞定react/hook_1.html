@@ -1,0 +1,33 @@
+<html>
+<head>
+	<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+	<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+	<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+	<div id="root"></div>
+<script type="text/babel">
+function App (){
+	const [text, setText] = useState("初始文本")
+	
+	function changeText(){
+		return setText("修改后的文本")
+	}
+	return (
+		<div className="textButton">
+			<p>
+				{text}
+			</p>
+			<button onClick={changeText}>点击修改文本</button>
+		</div>
+	)
+}
+
+ReactDOM.render(
+	<App />,
+	document.getElementById('root')
+);
+
+</script>
+</body>
+</html>
