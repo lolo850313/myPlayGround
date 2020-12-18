@@ -1,24 +1,22 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
+// App.tsx
+import React, { useState } from 'react';
+import './App.css';
 
-class AutoFocusInput extends Component {
-	componentDidMount(){
-		this.input.focus()
-	}
+function App() {
+  const [content, setContent] = useState('Hello World!');
 
-	render(){
-		return (
-			<div>
-				<input ref={ (input) => this.input = input} />
-			</div>
-		)
-	}
-
+  return (
+    <div
+      className="app"
+      // 方便测试用例中获取 DOM 节点
+      data-testid="container"
+      onClick={() => {
+        setContent('Hello Jack!');
+      }}
+    >
+      {content}
+    </div>
+  );
 }
 
-
-ReactDOM.render(
-		<AutoFocusInput />,
-	document.getElementById('root')
-);
+export default App;
