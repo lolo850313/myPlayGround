@@ -17,7 +17,7 @@ class CommentApp extends Component {
 	}
 
 	_loadComments() {
-		//注意这里不能用const
+		//注意这里不能用const, 
 		let comments = localStorage.getItem('comments')
 
 		if (comments) {
