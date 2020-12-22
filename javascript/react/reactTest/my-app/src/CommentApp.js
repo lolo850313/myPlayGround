@@ -41,7 +41,7 @@ class CommentApp extends Component {
 		let comments = this.state.comments
 		comments.push(comment)
 		this.setState({
-			comments
+			comments : comments
 		})
 
 		this._saveComments(comments)
