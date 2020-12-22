@@ -24,10 +24,6 @@ class CommentInput extends Component {
 		this.textarea.focus()
 	}
 
-
-
-
-	
 	_loadUsername() {
 		const username = localStorage.getItem('username')
 		if(username){
@@ -56,19 +52,22 @@ class CommentInput extends Component {
 		this.setState({
 			content : event.target.value
 		}) 
-		}
+	}
 	handleSubmit(){
+
+		console.log(this.state)
+		console.log(111)
 		if (this.props.onSubmit) {
+			console.log(this.state)
 			this.props.onSubmit({
 				username : this.state.usename, 
 				content : this.state.content,
-				createdTime : + new Date()
-			})
-		} 
-		this.setState({
-			content : ""
-		})
-		}
+				// createdTime : + new Date()
+				})
+			} 
+		
+		this.setState({content : ""})
+	}
 
 	render() {
 		return (

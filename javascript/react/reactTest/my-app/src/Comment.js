@@ -4,6 +4,25 @@ class Comment extends Component {
 	// constructor(props){
 	// 	super(props)
 	// }
+
+	// static propTypes = {
+	// 	comment : this.propTypes.object.isRequired
+	// }
+
+	// constructor() {
+	// 	super()
+	// 	this.state = {timeString : ''}
+	// }
+
+	// componentWillMount () {
+	// 	this._updateTimeString()
+	// }
+
+
+	// _updateTimeString (){
+	// 	const comment = this.props.comment
+	// }
+
 	render() {
 		return (
 			<div className="comment">
