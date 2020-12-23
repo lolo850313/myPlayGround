@@ -33,9 +33,7 @@ class CommentApp extends Component {
 
 	handleSubmitComment (comment) {
 		if(!comment) return
-		console.log(comment)
 		if(!comment.username) return alert('请输入用户名')
-
 		if(!comment.content) return alert('请输入评论')
 
 		let comments = this.state.comments

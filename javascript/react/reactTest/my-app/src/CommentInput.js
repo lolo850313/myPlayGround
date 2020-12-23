@@ -10,6 +10,7 @@ class CommentInput extends Component {
 		this.state = {
 			username : "",
 			content : "",
+
 		}
 		this.handleUsernameChange = this.handleUsernameChange.bind(this)
 		this.handleContentChange = this.handleContentChange.bind(this)
@@ -56,10 +57,10 @@ class CommentInput extends Component {
 
 	handleSubmit(){
 		if (this.props.onSubmit) {
-			console.log(this.state)
 			this.props.onSubmit({
 				username : this.state.username, 
 				content : this.state.content,
+				createdTime : +new Date()
 			})
 		} 
 		
