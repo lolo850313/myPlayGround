@@ -9,6 +9,7 @@ class CommentApp extends Component {
 			comments : []
 		}
 		this.handleSubmitComment = this.handleSubmitComment.bind(this)
+		this.handleDeleteComment = this.handleDeleteComment.bind(this)
 	}
 
 
@@ -44,12 +45,16 @@ class CommentApp extends Component {
 
 		this._saveComments(comments)
 	}
+
+	handleDeleteComment (index) {
+		console.log(index)
+	}
 	
 	render() {
 		return (
 				<div className='wrapper'>
 					<CommentInput onSubmit={this.handleSubmitComment} />
-					<CommentList comments={this.state.comments} />
+					<CommentList comments={this.state.comments} onDeleteComment={this.handleDeleteComment}/>
 				</div>
 		)
 	}
