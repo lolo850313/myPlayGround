@@ -54,7 +54,7 @@ class CommentApp extends Component {
 		return (
 				<div className='wrapper'>
 					<CommentInput onSubmit={this.handleSubmitComment} />
-					<CommentList comments={this.state.comments} onDeleteComment={this.handleDeleteComment}/>
+					<CommentList comments={this.state.comments} appDelete={this.handleDeleteComment}/>
 				</div>
 		)
 	}

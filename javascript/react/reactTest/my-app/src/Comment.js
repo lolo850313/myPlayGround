@@ -38,8 +38,8 @@ class Comment extends Component {
 	}
 
 	handleDeleteComment() {
-		if(this.props.onDeleteComment){
-			this.props.onDeleteComment(this.props.index)
+		if(this.props.listDelete){
+			this.props.listDelete(this.props.index)
 		}
 	}
 
