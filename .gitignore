@@ -114,5 +114,9 @@ yarn-error.log*
 
 # dotenv environment variables file
 .env
+<<<<<<< HEAD
 */.eslintcache
+=======
+.eslintcache
+>>>>>>> c255ad0fa708f938da1e802731991b150997ec77
 javascript/react/reactTest/my-app/.eslintcache
