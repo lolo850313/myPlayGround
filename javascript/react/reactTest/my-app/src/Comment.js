@@ -22,9 +22,9 @@ class Comment extends Component {
 		)
 	}
 
-	// componentDidUnmount() {
-	// 	this._timer
-	// }
+	componentDidUnmount() {
+		clearInterval(this._timer)
+	}
 
 
 	_updateTimeString (){
