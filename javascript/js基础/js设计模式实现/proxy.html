@@ -1,0 +1,26 @@
+<!-- 我们在事件代理的时候其实就是使用了代理模式，通过把监听事件全部交由父节点进行监听，
+这样你添加节点或者删除节点的时候就不用去改变监听的代码。 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="ul">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <script>
+        let ul = document.querySelector('#ul')
+        ul.addEventListener('click', (event) => {
+            console.log(event.target.innerText);
+        })
+    </script>
+</body>
+</html>
