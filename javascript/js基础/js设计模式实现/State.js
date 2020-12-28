@@ -1,4 +1,5 @@
 // 根据情况进行不一样的方案，比如你想去旅游，明确自己有多少钱然后选择旅游方式。
+//多了undefined是怎么来的？
 let strategies = {
     "rich" : function () {
         console.log("You can go with plane")
@@ -15,4 +16,6 @@ let howShouldGo = function (money) {
     return strategies[money]()
 }
 
+console.log(howShouldGo("middle"))
+console.log(howShouldGo("poor"))
 console.log(howShouldGo("rich"))
