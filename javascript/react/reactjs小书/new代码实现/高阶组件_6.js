@@ -37,6 +37,7 @@ wrapWithLoadData = (WrapperComponent) => {
             this.state = { data : null}
         }
 
+        // 传进来的 props.data 去服务器取数据。这时候修改 InputWithUserName
         componentWillMount () {
             ajax.get('/data/' + this.props.data, (data) => {
                 this.setState( { data })
