@@ -1,17 +1,65 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import Header from './Header';
+import Content from './Content';
+import {React, Component} from 'react'
+import PropTypes from 'prop-types'
+
+
+function createStore(reducer) {
+  let state = null
+  const listeners = []
+  const subscribe = (listener) => listeners.push(listener)
+  const getState = () => state
+  const dispatch = (action) => {
+    state = reducer(state, action)
+    listeners.forEach( (listener) => listener())
+  }
+  dispatch({})
+  return { getState, dispatch, subscribe }
+
+}
+
+const themeReducer = ( state, action) => {
+  if(!state) {
+    return {
+      themeColor: 'red'
+    }
+  }
+
+  switch (action.type) {
+    case 'CHANGE_COLOR':
+      return {
+        ...state,
+        themeColor : action.themeColor
+      }  
+    default:
+      return state
+  }
+}
+
+const store = createStore(themeReducer)
+
+class Index extends Component {
+  static childContextTypes = {
+    store : PropTypes.object
+  }
+  //将store放入到context中
+  getChildContext(){
+    return { store }
+  }
+
+  render() {
+      return (
+          <div>
+            <Header />
+            <Content />
+          </div>
+      )
+  }
+}
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+    <Index />,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
