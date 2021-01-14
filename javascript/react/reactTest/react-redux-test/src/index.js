@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
 import './index.css';
-import Header from './Header';
-import Content from './Content';
+import Header from './containers/Header';
+import Content from './containers/Content';
 import {React, Component} from 'react'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
