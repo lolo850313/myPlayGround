@@ -5,49 +5,51 @@ class CommentInput extends Component {
 	static propTypes = {
 		onSubmit : PropTypes.func,
 		userName : PropTypes.string,
-		onUserNameInputBlue : PropTypes.func,
+		onUserNameInputBlur : PropTypes.func,
 	}
 
 	static defaultProps = {
 		userName : ""
 	}
 	
-	constructor(){
-		super()
+	constructor(props){
+		super(props)
 		this.state = {
-			username : "",
+			username : props.userName,
 			content : "",
 
 		}
-		this.handleUsernameChange = this.handleUsernameChange.bind(this)
-		this.handleContentChange = this.handleContentChange.bind(this)
-		this.handleSubmit = this.handleSubmit.bind(this)
+		// this.handleUsernameChange = this.handleUsernameChange.bind(this)
+		// this.handleContentChange = this.handleContentChange.bind(this)
+		// this.handleSubmit = this.handleSubmit.bind(this)
 	}
 
-	componentWillMount(){
-		this._loadUsername()
-	}
+	// componentWillMount(){
+	// 	this._loadUsername()
+	// }
 
 	componentDidMount(){
 		this.textarea.focus()
 	}
 
-	_loadUsername() {
-		const username = localStorage.getItem('username')
-		if(username){
-			this.setState({
-				username
-			})
-		}
+	// _loadUsername() {
+	// 	const username = localStorage.getItem('username')
+	// 	if(username){
+	// 		this.setState({
+	// 			username
+	// 		})
+	// 	}
 	
-	}
+	// }
 
-	_saveUserName(username) {
-		localStorage.setItem('username', username)
-	}
+	// _saveUserName(username) {
+	// 	localStorage.setItem('username', username)
+	// }
 
 	handleUsernameBlur(event) {
-		this._saveUserName(event.target.value)
+		if (this.props.onUserNameInputBlur) {
+			this.props.onUserNameInputBlur(event.target.value)
+		}
 	}
 
 	handleUsernameChange(event){
