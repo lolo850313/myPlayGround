@@ -4,18 +4,18 @@ import PropTypes from 'prop-types'
 class CommentInput extends Component {
 	static propTypes = {
 		onSubmit : PropTypes.func,
-		userName : PropTypes.string,
+		username : PropTypes.any,
 		onUserNameInputBlur : PropTypes.func,
 	}
 
 	static defaultProps = {
-		userName : ""
+		username : ""
 	}
 	
 	constructor(props){
 		super(props)
 		this.state = {
-			username : props.userName,
+			username : props.username,
 			content : "",
 
 		}
@@ -73,7 +73,7 @@ class CommentInput extends Component {
 			})
 		} 
 		
-		this.setState({content : ""})
+		this.setState( {content : ""} )
 	}
 
 	render() {
@@ -84,7 +84,7 @@ class CommentInput extends Component {
 					<div className="comment-field-input">
 						<input 
 						value={this.state.username} 
-						onChange={this.handleUsernameChange} 
+						onChange={this.handleUsernameChange.bind(this)} 
 						onBlur={this.handleUsernameBlur.bind(this)}
 						/>
 					</div>
@@ -95,11 +95,11 @@ class CommentInput extends Component {
 						<textarea 
 						ref={ (textarea) => this.textarea = textarea}
 						value={this.state.content} 
-						onChange={this.handleContentChange} />
+						onChange={this.handleContentChange.bind(this)} />
 					</div>
 				</div>
 				<div className="comment-field-button">
-					<button onClick={this.handleSubmit} >发布</button>
+					<button onClick={this.handleSubmit.bind(this)} >发布</button>
 				</div>
 			</div>
 				

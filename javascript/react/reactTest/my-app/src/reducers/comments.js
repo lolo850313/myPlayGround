@@ -4,7 +4,7 @@ const ADD_COMMENT = 'ADD_COMMENT'
 const DELETE_COMMENT = 'DELETE_COMMENT'
 
 //reducer
-export default (state, action) => {
+export default function commentsReducer (state, action) {
     if (!state) {
         state = { comments : [] }
     }
@@ -12,13 +12,15 @@ export default (state, action) => {
     switch (action.type) {
         case INIT_COMMENTS:
             return { comments : action.comment}
-        case ADD_COMMENTS:
+
+        case ADD_COMMENT:
             return { 
                 comments : [...state.comments, action.comment]
             }
-        case DELETE_COMMENTS:
+        case DELETE_COMMENT:
             return { 
-                comments : [...state.comments.slice(0, action.commentIndex), 
+                comments : [
+                    ...state.comments.slice(0, action.commentIndex), 
                     ...state.comments.slice(action.commentIndex + 1),
                 ]
             }
@@ -32,8 +34,8 @@ export const initComments = (comments) => {
     return { type: INIT_COMMENTS, comments}
 }
 
-export const addComment = (commentIndex) => {
-    return { type : ADD_COMMENT, commentIndex}
+export const addComment = (comment) => {
+    return { type : ADD_COMMENT, comment}
 }
 
 export const deleteComment = (commentIndex) => {
