@@ -12,6 +12,7 @@ export default function commentsReducer (state, action) {
     switch (action.type) {
         case INIT_COMMENTS:
             return { comments : action.comment}
+
         case ADD_COMMENT:
             return { 
                 comments : [...state.comments, action.comment]
@@ -32,8 +33,8 @@ export const initComments = (comments) => {
     return { type: INIT_COMMENTS, comments}
 }
 
-export const addComment = (commentIndex) => {
-    return { type : ADD_COMMENT, commentIndex}
+export const addComment = (comment) => {
+    return { type : ADD_COMMENT, comment}
 }
 
 export const deleteComment = (commentIndex) => {
