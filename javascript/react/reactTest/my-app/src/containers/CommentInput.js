@@ -98,8 +98,9 @@ class CommentInputContainer extends Component {
 		}
 
 		const { comments } = this.props
-		const newComment = [...comments, comment]
-		localStorage.setItem('comments', JSON.stringify(newComment))
+		console.log(comments,this.props)
+		const newComments = [...comments, comment]
+		localStorage.setItem('comments', JSON.stringify(newComments))
 
 		//this.props.onSubmit是connect传进来的，会dispatch一个action增加评论
 		if (this.props.onSubmit) {

@@ -4,7 +4,7 @@ const ADD_COMMENT = 'ADD_COMMENT'
 const DELETE_COMMENT = 'DELETE_COMMENT'
 
 //reducer
-export default function (state, action) {
+export default function commentsReducer (state, action) {
     if (!state) {
         state = { comments : [] }
     }

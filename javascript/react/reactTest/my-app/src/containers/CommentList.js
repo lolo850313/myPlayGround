@@ -23,13 +23,15 @@ class CommentListContainer extends Component {
 		//注意这里不能用const, 
 		let comments = localStorage.getItem('comments')
 
-		if (comments) {
-			comments = JSON.parse(comments)
+		// if (comments) {
+		// 	comments = JSON.parse(comments)
 
 			
-		} else {
-			comments = []
-		}
+		// } else {
+		// 	comments = []
+		// }
+
+		comments = comments ? JSON.parse(comments) : []
 		this.props.initComments(comments)
 	}
 
@@ -59,7 +61,7 @@ class CommentListContainer extends Component {
 		return (
 				<CommentList 
 					comments = { this.props.comments}
-					onDeleteComment = { this.handleDeleteComment.bind(this)}
+					appDelete = { this.handleDeleteComment.bind(this)}
 				/>
 		)
 	}
