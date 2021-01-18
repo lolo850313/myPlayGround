@@ -19,7 +19,8 @@ export default function commentsReducer (state, action) {
             }
         case DELETE_COMMENT:
             return { 
-                comments : [...state.comments.slice(0, action.commentIndex), 
+                comments : [
+                    ...state.comments.slice(0, action.commentIndex), 
                     ...state.comments.slice(action.commentIndex + 1),
                 ]
             }

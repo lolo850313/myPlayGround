@@ -84,4 +84,5 @@ const mapDispatchToProps = (dispatch) => {
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CommentListContainer)
+export default connect(mapStateToProps, mapDispatchToProps)
+(CommentListContainer)
