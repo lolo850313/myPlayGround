@@ -13,17 +13,23 @@ class CheeseCake {
         this.name = "奶酪蛋糕"
     }
 }
+
+function cakeCategoryMaker(type) {
+    let cake
+    if (type === PUFF_CAKE) {
+        cake = new PuffCake()
+    }
+    else if (type === CHEESE_CAKE) {
+        cake = new CheeseCake()
+    }
+    else {
+        cake = false
+    }
+    return cake
+}
 class CakeMaker {
     constructor(type) {
-        if (type === PUFF_CAKE) {
-            this.cake = new PuffCake()
-        }
-        else if (type === CHEESE_CAKE) {
-            this.cake = new CheeseCake()
-        }
-        else {
-            console.log("invalid cake")
-        }
+        this.cake = cakeCategoryMaker(type)
     }
 
     stirIngredients() {
