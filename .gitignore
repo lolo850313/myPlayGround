@@ -117,3 +117,5 @@ yarn-error.log*
 .eslintcache
 javascript/react/reactTest/my-app/.eslintcache
 javascript/react/reactTest/my-app/.eslintcache
+
+.pdf
