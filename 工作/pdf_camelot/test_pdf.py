@@ -19,4 +19,11 @@ for p in range(0, len(pdf.pages)):
     page = pdf.pages[p]
     page_text = page.extract_text()
 
+    page_tables = page.extract_tables(
+            table_settings={'vertical_strategy': 'lines_strict', 'horizontal_strategy': 'lines_strict',
+                            'min_words_vertical': 1, 'min_words_horizontal': 1})
 
+    for pt in range(0, len(page_tables)):
+        print(p)
+        page_table = page_tables[pt]
+        print(page_table)
