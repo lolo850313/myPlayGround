@@ -1,2 +1,0 @@
-启动验证：
-启动之后，在浏览器中输入http://localhost:4723/wd/hub/status 出现下面代码说明成功
