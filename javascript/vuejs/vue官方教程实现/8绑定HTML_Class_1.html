@@ -11,10 +11,21 @@
 </head>
 <body>
     <div id="app">
+        <!-- vbind支持对象语法，数组语法 -->
+        <!-- v-bind:class="{active : isActive , green : isGreen}"  -->
+        <!-- v-bind:class="[ 'active' , 'green']"  -->
+
+        <!-- vbind数组语法内也可以使用三元表达式等简单的逻辑运算 -->
+        <!-- v-bind:class="[ 'active' , isGreen? 'green' : '']" -->
+
+        <!-- vbind在数组语法内可以使用对象语法 -->
+        <!-- v-bind:class= "[ {'active' : isActive } , isGreen? 'green' : '']"  -->
+
         <div 
-        class="static" 
-        v-bind:class="{active : isActive}" 
-        style="width: 200px; height:200px; text-align:center; list-style: height 200px;">
+        class="test" 
+        style="width: 200px; height:200px; text-align:center; list-style: height 200px;"
+        v-bind:class= "[ {'active' : isActive } , isGreen? 'green' : '']"
+        >  
             hi vue
         </div>
 
@@ -24,10 +35,13 @@
         el : "#app",
         data : { 
             isActive : true,
+            isGreen : true
         },
     })
 </script>
 <style>
+    .test{font-size:30px;}
+    .green{color: #00FF00}
     .active{
         background: #FF0000;
     }
