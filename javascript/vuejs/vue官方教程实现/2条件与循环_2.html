@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+    <div id="app">
+        <ol>
+            <li v-for="(todo, index) in todos" :key="index">
+                {{ todo.text }}
+            </li>
+        </ol>
+    </div>
+<script type="text/javascript">
+    var vm = new Vue({
+        el : "#app",
+        data : { 
+            todos:  [
+                {text : "学习js"},
+                {text : "学习vue"},
+                {text : "学习牛项目"},
+            ] 
+        }
+    })
+
+    //vm.todos.push({text : "lalala"})
+</script>
+</body>
+</html>
