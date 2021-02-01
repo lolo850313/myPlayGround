@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+    <div id="app">
+    <!-- 绑定内联样式 -->
+        
+        <!-- 使用对象绑定内联样式 -->
+        <!-- <div v-bind:style="{ color : activeColor, fontSize : fontSize + 'px'}"> -->
+        
+        <!-- 直接绑定样式对象 -->
+        <!-- <div v-bind:style='styleObject'> -->
+
+        <!-- 使用数组将多个样式对象绑定到同一元素 -->
+
+
+        <!-- 为style绑定中的property提供一个包含多个值的数组 -->
+        <!-- 这样写只会渲染数组中最后一个被浏览器支持的值 -->
+        <div v-bind:style='{display: ["-webkit-box", "-ms-flexbox", "flex"]}'>
+            hi vue
+        </div>
+
+
+    </div>
+<script type="text/javascript">
+    var vm = new Vue({
+        el : "#app",
+        data : {
+            activeColor : 'red',
+            fontSize : 30,
+            styleObject:{
+                color : 'red',
+                fontSize : "13px",
+            },
+            baseStyles:{
+                color : 'green',
+            },
+            overridingStyles:{
+                fontSize : "33px",
+            }
+        }
+    })
+</script>
+<style>
+    .test{font-size:30px;}
+    .green{color: #00FF00}
+</style>
+</body>
+</html>
