@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- v-if="condition" v-else-if="condition" v-else -->
+        <div v-if="type === 'A'">
+            A
+        </div>
+        <div v-else-if="type === 'B'">
+            B
+        </div>
+        <div v-else-if="type === 'C'">
+            C
+        </div>
+        <div v-else>
+            not A/B/C
+        </div>
+
+        <!-- 使用template将多个不可见的元素包裹起来，使用vif -->
+        <template v-if="ok1">
+            <h1>v-if-1 title</h1>
+            <p>v-if-1 paragraph1</p>
+            <p>v-if-1 paragraph2</p>
+        </template>
+
+        <template v-if="ok2">
+            <h1>v-if-2 title</h1>
+            <p>v-if-2 paragraph1</p>
+            <p>v-if-2 paragraph2</p>
+        </template>
+
+    </div>
+<script type="text/javascript">
+    var vm = new Vue({
+        el : "#app",
+        data : {
+            type : 'D',
+            ok1 : false,
+            ok2 : true
+            }
+    })
+</script>
+<style>
+    .test{font-size:30px;}
+    .green{color: #00FF00}
+</style>
+</body>
+</html>
