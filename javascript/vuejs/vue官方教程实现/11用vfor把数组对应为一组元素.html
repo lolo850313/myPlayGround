@@ -8,25 +8,22 @@
 </head>
 <body>
     <div id="app">
-        <!-- 切换 loginType 将不会清除用户已经输入的内容。
-            比如先在username填入123,那么点击button后，此input框内的123不会消失-->
-        <template v-if="loginType === 'username'">
-            <label for="">username</label>
-            <input type="text" placeholder="Enter your username">
-        </template>
-
-        <template v-else>
-            <label for="">Email</label>
-            <input type="text" placeholder="Enter your email address">
-        </template>
-        <button v-on:click="handleLoginType">Toggle login type</button>
+        <ol>
+            <li v-for="(item, index) in items" :key="item.message">
+                {{item.message}}
+            </li>
+        </ol>
 
     </div>
 <script type="text/javascript">
     var vm = new Vue({
         el : "#app",
         data : {
-            loginType : 'username',
+            items : [
+                {message : "Foo"},
+                {message : "bar"},
+                
+                ],
             },
         methods : {
             handleLoginType : function(){

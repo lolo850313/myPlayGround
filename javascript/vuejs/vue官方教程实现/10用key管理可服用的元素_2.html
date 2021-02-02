@@ -8,16 +8,15 @@
 </head>
 <body>
     <div id="app">
-        <!-- 切换 loginType 将不会清除用户已经输入的内容。
-            比如先在username填入123,那么点击button后，此input框内的123不会消失-->
+        <!-- 添加一个具有唯一值的 key attribute后的vif -->
         <template v-if="loginType === 'username'">
             <label for="">username</label>
-            <input type="text" placeholder="Enter your username">
+            <input type="text" placeholder="Enter your username" key="username">
         </template>
 
         <template v-else>
             <label for="">Email</label>
-            <input type="text" placeholder="Enter your email address">
+            <input type="text" placeholder="Enter your email address" key="email">
         </template>
         <button v-on:click="handleLoginType">Toggle login type</button>
 

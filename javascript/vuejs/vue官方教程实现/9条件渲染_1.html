@@ -22,6 +22,11 @@
             not A/B/C
         </div>
 
+        <!-- vshow与vif不一样。vshow的元素始终被渲染并保留在dom中 -->
+        <!-- 注意 vshow不支持template元素，也不支持velse -->
+        <!-- 注意： vif和vfor一起使用时，vfor比vif更高的优先级 -->
+        <h1 v-show="ok">hello! v show</h1>
+
         <!-- 使用template将多个不可见的元素包裹起来，使用vif -->
         <template v-if="ok1">
             <h1>v-if-1 title</h1>
@@ -42,7 +47,8 @@
         data : {
             type : 'D',
             ok1 : false,
-            ok2 : true
+            ok2 : true,
+            ok : true
             }
     })
 </script>
