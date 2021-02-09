@@ -7,20 +7,24 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
-    <ul id="v-for-object" class="demo">
-        <li v-for="n in evenNumbers">
-            {{ n }}
-        </li>
-    </ul>
+    <!-- 注意 根元素不能有vfor -->
+    <div id="v-for-object">
+        <ul  class="demo" v-for="(set, index) in sets" :key="index">
+            <li v-for="n in even(set)">
+                {{ n }}
+            </li>
+        </ul>
+    </div>
+    
 <script type="text/javascript">
     var vm = new Vue({
         el : "#v-for-object",
         data : {
-            numbers : [1, 2, 3, 4, 5],
+            sets : [[1, 2, 3, 4, 5],[6, 7, 8, 9, 10]],
         },
-        computed : {
-            evenNumbers : function(){
-                return this.numbers.filter(function(number){
+        methods : {
+            even : function(numbers){
+                return numbers.filter(function(number){
                     return number % 2 == 0
                 })
             }
