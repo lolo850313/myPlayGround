@@ -7,12 +7,12 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
-    <!-- 注意 根元素不能有vfor -->
     <div id="v-for-object">
-        <ul  class="demo" v-for="(set, index) in sets" :key="index">
-            <li v-for="n in even(set)">
-                {{ n }}
-            </li>
+        <ul>
+            <template v-for="(item, index) in items">
+                <li>{{ item.msg }} </li>
+                <li class="divider" role="presentation"></li>
+            </template>
         </ul>
     </div>
     
@@ -20,7 +20,9 @@
     var vm = new Vue({
         el : "#v-for-object",
         data : {
-            sets : [[1, 2, 3, 4, 5],[6, 7, 8, 9, 10]],
+            items : [
+            {msg : "msg1"},
+            {msg : "msg2"}],
         },
         methods : {
             even : function(numbers){
