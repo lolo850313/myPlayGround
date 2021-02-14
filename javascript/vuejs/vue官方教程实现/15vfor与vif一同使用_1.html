@@ -8,34 +8,21 @@
 </head>
 <body>
     <div id="v-for-object">
-        <ul>
-            <template v-for="(item, index) in items">
-                <li>{{ item.msg }} </li>
-                <li class="divider" role="presentation"></li>
-            </template>
+        <ul v-if="todos.length">
+            <li v-for="(todo, index) in todos" :key="index">
+                {{ todo }}
+            </li>
         </ul>
+        <p v-else>No todos left</p>
     </div>
     
 <script type="text/javascript">
     var vm = new Vue({
         el : "#v-for-object",
         data : {
-            items : [
-            {msg : "msg1"},
-            {msg : "msg2"}],
+            todos : [],
         },
-        methods : {
-            even : function(numbers){
-                return numbers.filter(function(number){
-                    return number % 2 == 0
-                })
-            }
-        }
     })
 </script>
-<style>
-    .test{font-size:30px;}
-    .green{color: #00FF00}
-</style>
 </body>
 </html>
