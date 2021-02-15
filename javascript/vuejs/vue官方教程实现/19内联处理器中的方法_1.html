@@ -7,24 +7,21 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
-    <!-- 注意 li 中的is 让li可以使用模板todo-item -->
     <div id="app">
-        <button v-on:click="addCounter">Add 1</button>
-        <p>The button above has been clicked {{ counter }} times.</p>
+        <button v-on:click="say('hi')">Say hi</button>
+        <button v-on:click="say('what')">Say what</button>
     </div>
-    
+
 <script type="text/javascript">
     var vm = new Vue({
         el : "#app",
-        data : {
-            counter : 1
-        },
         methods:{
-            addCounter : function(){
-                this.counter += 1
+            say : function(msg){
+                alert(msg)
             }
         }
     })
+
 </script>
 </body>
 </html>

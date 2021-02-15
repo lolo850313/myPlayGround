@@ -7,24 +7,21 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
-    <!-- 注意 li 中的is 让li可以使用模板todo-item -->
     <div id="app">
-        <button v-on:click="addCounter">Add 1</button>
-        <p>The button above has been clicked {{ counter }} times.</p>
+        <button v-on:keyup.enter="alertMsg">submit</button>
     </div>
-    
+
 <script type="text/javascript">
+    //<input v-on:keyup.enter="submit"> 只有在key是Enter时调用vm.submit()
     var vm = new Vue({
         el : "#app",
-        data : {
-            counter : 1
-        },
         methods:{
-            addCounter : function(){
-                this.counter += 1
+            alertMsg : function(){
+                alert('111')
             }
         }
     })
+
 </script>
 </body>
 </html>
