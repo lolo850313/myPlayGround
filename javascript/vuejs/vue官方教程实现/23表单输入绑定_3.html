@@ -8,27 +8,24 @@
 </head>
 <body>
     <div id="app">
+        <input type="radio" name="" id="" value="a" v-model="picked">
+        <input type="checkbox" v-model="toggle">
         <select name="" id="" v-model="selected">
-            <option v-bind:value="option.value" v-for="(option, index) in options" :key="index">
-                {{option.text}}
-            </option>
+            <option value="abc">ABC</option>
         </select>
-        <span>selected : {{ selected }}</span>
     </div>
 
 <script type="text/javascript">
+    //单选按钮，复选框及选择框的选项，v-model 绑定的值通常是静态字符串
     var vm = new Vue({
         el : "#app",
         data : {
-            selected : "A",
-            options : [
-                {text : "one", value : "A"},
-                {text : "two", value : "B"},
-                {text : "three", value : "C"},
-            ]
+            picked : "",
+            toggle : null,
+            selected : "",
         }
     })
-
+    console.log(vm.picked, vm.toggle, vm.selected)
 </script>
 </body>
 </html>
