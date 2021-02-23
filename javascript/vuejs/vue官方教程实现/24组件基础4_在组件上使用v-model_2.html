@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+    <div id="app">
+        <div v-bind:style="{ fontSize: postFontSize + 'em' }">
+            <blog-post 
+            v-for="post in posts" 
+            v-bind:key="post.id" 
+            v-on:enlarge-text="onEnlargeText"
+            v-bind:post="post"></blog-post>
+        </div>
+    </div>
+
+<script type="text/javascript">
+    //$emit抛出一个enlarge-text事件，von监听enlarge-text事件
+    Vue.component('blog-post', {
+        props:['post'],
+        //注意"$emit('enlarge-text', 0.1)"中第二个参数会作为enlargement传入onEnlargeText函数内
+        template:`
+            <div class="blog-post">
+                <h3>{{ post.title}}</h3>
+                <button v-on:click="$emit('enlarge-text', 0.1)">Enlarge text</button>
+                <div v-html="post.content"></div>
+            </div>
+        `,
+    })
+    var vm = new Vue({
+        el : "#app",
+        data : {
+            posts : [
+                {id : 1, title : "my journey with vue"},
+                {id : 2, title : "blogging with vue"},
+                {id : 3, title : "why use vue is so fun"},
+            ],
+            postFontSize : 1,
+        },
+        methods:{
+            onEnlargeText : function(enlargement){
+                this.postFontSize += enlargement
+            }
+        }
+    })
+</script>
+</body>
+</html>

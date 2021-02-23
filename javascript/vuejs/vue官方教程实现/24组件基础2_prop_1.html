@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+    <div id="app">
+        <blog-post title="my journey with vue"></blog-post>
+        <blog-post title="blogging with vue"></blog-post>
+        <blog-post title="why use vue is so fun"></blog-post>
+        
+        
+    </div>
+
+<script type="text/javascript">
+    Vue.component('blog-post', {
+        props:['title'],
+        //data必须是函数。
+        template:'<h3>{{ title }}</h3>',
+    })
+    var vm = new Vue({
+        el : "#app",
+        data : {
+        },
+    })
+</script>
+</body>
+</html>

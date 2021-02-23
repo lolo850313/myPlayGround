@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+    <div id="app">
+        <blog-post v-for="post in posts" v-bind:key="post.id" v-bind:title="post.title"></blog-post>
+    </div>
+
+<script type="text/javascript">
+    //使用vbind来动态传递props
+    Vue.component('blog-post', {
+        props:['title'],
+        template:'<h3 >{{ title }}</h3>',
+    })
+    var vm = new Vue({
+        el : "#app",
+        data : {
+            posts : [
+                {id : 1, title : "my journey with vue"},
+                {id : 2, title : "blogging with vue"},
+                {id : 3, title : "why use vue is so fun"},
+            ]
+        },
+    })
+</script>
+</body>
+</html>
