@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+    <div id="app">
+        https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-dynamic-components
+    </div>
+
+<script type="text/javascript">
+    //注意 input中使用vmodel则需要
+    //1.value attribute 绑定到一个名叫 value 的 prop 上
+    //2.在其 input 事件被触发时，将新的值通过自定义的 input 事件抛出
+    Vue.component('custom-input', {
+        props:['value'],
+        template:`
+        <input v-bind:value="value" v-on:input="$emit('input', $event.target.value)">
+        `,
+    })
+    var vm = new Vue({
+        el : "#app",
+        data : {
+            searchText : "",
+        },
+    })
+</script>
+</body>
+</html>
