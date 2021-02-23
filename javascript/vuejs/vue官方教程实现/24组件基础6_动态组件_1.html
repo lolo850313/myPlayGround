@@ -1,32 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
-</head>
-<body>
-    <div id="app">
-        https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-dynamic-components
+<html>
+  <head>
+    <title>Dynamic Components Example</title>
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+      .tab-button {
+        padding: 6px 10px;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        border: 1px solid #ccc;
+        cursor: pointer;
+        background: #f0f0f0;
+        margin-bottom: -1px;
+        margin-right: -1px;
+      }
+      .tab-button:hover {
+        background: #e0e0e0;
+      }
+      .tab-button.active {
+        background: #e0e0e0;
+      }
+      .tab {
+        border: 1px solid #ccc;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="dynamic-component-demo" class="demo">
+      <button
+        v-for="tab in tabs"
+        v-bind:key="tab"
+        v-bind:class="['tab-button', { active: currentTab === tab }]"
+        v-on:click="currentTab = tab"
+      >
+        {{ tab }}
+      </button>
+
+      <component v-bind:is="currentTabComponent" class="tab"></component>
     </div>
 
-<script type="text/javascript">
-    //注意 input中使用vmodel则需要
-    //1.value attribute 绑定到一个名叫 value 的 prop 上
-    //2.在其 input 事件被触发时，将新的值通过自定义的 input 事件抛出
-    Vue.component('custom-input', {
-        props:['value'],
-        template:`
-        <input v-bind:value="value" v-on:input="$emit('input', $event.target.value)">
-        `,
-    })
-    var vm = new Vue({
-        el : "#app",
-        data : {
-            searchText : "",
+    <script>
+      Vue.component("tab-home", {
+        template: "<div>Home component</div>"
+      });
+      Vue.component("tab-posts", {
+        template: "<div>Posts component</div>"
+      });
+      Vue.component("tab-archive", {
+        template: "<div>Archive component</div>"
+      });
+
+      new Vue({
+        el: "#dynamic-component-demo",
+        data: {
+          currentTab: "Home",
+          tabs: ["Home", "Posts", "Archive"]
         },
-    })
-</script>
-</body>
+        computed: {
+          currentTabComponent: function() {
+            return "tab-" + this.currentTab.toLowerCase();
+          }
+        }
+      });
+    </script>
+  </body>
 </html>
