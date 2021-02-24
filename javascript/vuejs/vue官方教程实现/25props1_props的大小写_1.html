@@ -8,22 +8,14 @@
 </head>
 <body>
     <div id="app">
-        <table>
-            <!-- 自定义组件 <blog-post-row> 会被作为无效的内容提升到外部，并导致最终渲染结果出错。 -->
-            <!-- 幸好这个特殊的 is attribute 给了我们一个变通的办法 -->
-            <tr is="blog-post-row"></tr>
-            <blog-post-row></blog-post-row>
-        </table>
+        <blog-post post-title="hello!"></blog-post>
     </div>
 
 <script type="text/javascript">
-    Vue.component('blog-post-row', {
+    Vue.component('blogPost', {
+        props : ['postTitle'],
         template:`
-        <tbody>
-            <tr>1</tr>
-            <tr>2</tr>
-        </tbody>
-        
+        <h3>{{ postTitle }}</h3>
         `,
     })
     var vm = new Vue({

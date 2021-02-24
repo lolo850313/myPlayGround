@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 给prop一个静态的值 -->
+        <blog-post title="My journey with vue"></blog-post>
+
+        <!-- 通过vbind动态赋值给prop -->
+        <blog-post v-bind:title="post.title"></blog-post>
+        <blog-post v-bind:title="post.title + ' by ' + post.author.name"></blog-post>
+
+        <!-- 传入一个数值 -->
+        <blog-post v-bind:likes="42"></blog-post>
+        <!-- 使用变量动态赋值 -->
+        <blog-post v-bind:likes="post.likes"></blog-post>
+
+        <!-- 包含prop没有值的情况在内,都是true -->
+        <blog-post is-published></blog-post>
+        <!-- 即便是false是静态的,也需要vbind -->
+        <blog-post v-bind:is-published="false"></blog-post>
+
+    </div>
+
+<script type="text/javascript">
+    Vue.component('blogPost', {
+        props : ['postTitle'],
+        template:`
+        <h3>{{ postTitle }}</h3>
+        `,
+    })
+    var vm = new Vue({
+        el : "#app",
+    })
+</script>
+</body>
+</html>
