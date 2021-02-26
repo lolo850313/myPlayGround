@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
+  </head>
+<body>
+    <div id="app">
+      <!-- 修饰符.number将输入的数据转换为number类型 -->
+      <input v-model.number="number" type="number" step="10">
+      <p>{{ animatedNumber }}</p>
+        
+    </div>
+
+<script type="text/javascript">
+  new Vue({
+    el: '#app',
+    data: {
+      number: 0,
+      tweenedNumber: 0
+    },
+    computed: {
+      animatedNumber: function() {
+        return this.tweenedNumber.toFixed(0);
+      }
+    },
+    watch: {
+      number: function(newValue) {
+        gsap.to(this.$data, { duration: 0.5, tweenedNumber: newValue });
+      }
+    }
+  })
+</script>
+</body>
+</html>
