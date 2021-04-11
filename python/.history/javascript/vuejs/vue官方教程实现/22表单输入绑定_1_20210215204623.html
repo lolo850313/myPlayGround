@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" name="" id="" v-model="message" placeholder="edit me">
+        <p>message is {{ message }} </p>
+    </div>
+
+<script type="text/javascript">
+    //<input v-on:keyup.enter="submit"> 只有在key是Enter时调用vm.submit()
+    var vm = new Vue({
+        el : "#app",
+        methods:{
+            alertMsg : function(){
+                alert('111')
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

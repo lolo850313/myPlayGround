@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="warn('From cannot be submitted yet.', $event)">submit</button>
+    </div>
+
+<script type="text/javascript">
+    //<a v-on:click.stop="doThis"></a> 阻止事件继续传播
+    //<form v-on:submit.prevent="onSubmit"></form> 提交事件不再重载页面 
+    //v-on:click.stop.prevent 修饰符可以串联
+    //<form v-on:submit.prevent></form> 只有修饰符 
+    //<a v-on:click.once="doThis"></a>  点击事件将只会触发一次
+    //passive
+    var vm = new Vue({
+        el : "#app",
+        methods:{
+            warn : function(msg, event){
+                alert(msg)
+                if(event){
+                    event.preventDefault()
+                }
+                
+                
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

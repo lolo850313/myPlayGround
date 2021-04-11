@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+    <!-- 注意 li 中的is 让li可以使用模板todo-item -->
+    <div id="#app">
+        
+    </div>
+    
+<script type="text/javascript">
+    var vm = new Vue({
+        el : "#app",
+        data : {
+            count : 0
+        },
+        methods:{
+            addNewTodo : function(){
+                this.todos.push({
+                    id : this.nextTodoId,
+                    title : this.newTodoText
+                })
+                this.nextTodoId += 1
+            },
+        }
+    })
+</script>
+</body>
+</html>

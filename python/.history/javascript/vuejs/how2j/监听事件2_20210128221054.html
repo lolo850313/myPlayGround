@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Editor</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css">
+        .red{
+            background : red
+        }
+        .blue{
+            background : blue
+        }
+        .grey{
+            background : grey
+        }
+        .green{
+            background : green
+        }
+        .yellow{
+            background : yellow
+        }
+        div {
+            width: 100px;
+            cursor:pointer;
+        }
+        * {
+            margin: 0 auto;
+            text-align:center;
+            line-height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <p>一共点击了{{count}}次</p>
+        <!-- <button v-on:click="count++">点击</button> -->
+        <div v-on:click ="yell('yeye')" v-bind:class="blue">yeye
+            <div v-on:click ="yell('baba')" v-bind:class="green">baba
+                <div v-on:click.stop ="yell('me')" v-bind:class="grey">me
+                    <div v-bind:class="red" v-on:click="yell('son')">
+                        son
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                count: 0,
+                grey : "yellow",
+                blue : "blue",
+                green : "green",
+                red : "red",
+            },
+            methods: {
+                yell:function(str){
+                    alert(str)
+                }
+            },
+        })
+
+
+    </script>
+</body>
+
+</html>

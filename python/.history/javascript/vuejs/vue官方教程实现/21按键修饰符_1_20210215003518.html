@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+    <div id="app">
+        <button v-on:keyup.enter="warn('From cannot be submitted yet.', $event)">submit</button>
+    </div>
+
+<script type="text/javascript">
+    //<input v-on:keyup.enter="submit"> 只有在key是Enter时调用vm.submit()
+    var vm = new Vue({
+        el : "#app",
+        methods:{
+            warn : function(msg, event){
+                alert(msg)
+                if(event){
+                    event.preventDefault()
+                }
+  
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+    <div id="app">
+        
+    </div>
+
+<script type="text/javascript">
+    //<input v-on:keyup.enter="submit"> 只有在key是Enter时调用vm.submit()
+    var vm = new Vue({
+        el : "#app",
+        data : {
+            selected : "A",
+            option : [
+                {text : "one", value : "A"},
+                {text : "two", value : "B"},
+                {text : "three", value : "C"},
+            ]
+        }
+    })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+    <div id="v-for-object">
+        <ul v-if="todos.length">
+            <li v-for="(todo, index) in todos" :key="index">
+                {{ todo }}
+            </li>
+        </ul>
+        <p v-else>No todos left</p>
+    </div>
+    
+<script type="text/javascript">
+    var vm = new Vue({
+        el : "#v-for-object",
+        data : {
+            todos : [1,2,3,4],
+        },
+    })
+</script>
+<style>
+    .test{font-size:30px;}
+    .green{color: #00FF00}
+</style>
+</body>
+</html>

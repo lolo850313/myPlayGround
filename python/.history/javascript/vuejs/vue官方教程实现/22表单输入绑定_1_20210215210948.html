@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" name="" id="" v-model="message" placeholder="edit me">
+        <p>message is {{ message }}</p>
+        <textarea name="" id="" cols="30" rows="10" v-model="message2" placeholder="add multiple lines"></textarea>
+        <p>{{ message2 }}</p>
+        <br>
+        <div>
+            <input type="checkbox"  id="jack" value="jack" v-model="checkedNames">
+            <label for="jack">jack</label>
+            <input type="checkbox" id="john" value="john" v-model="checkedNames">
+            <label for="john">john</label>
+            <input type="checkbox" id="mike" value="mike" v-model="checkedNames">
+            <label for="mike">mike</label>
+            <br>
+            <span>checked names: {{ checkedNames }}</span>
+        </div>
+
+        <div>
+            <input type="radio" name="" id="one" value="One" v-model="picked">
+            <label for="one">one</label>
+            <input type="radio" name="" id="two" value="Two" v-model="picked">
+            <label for="two">two</label>
+            <br>
+            <span>picked :{{ picked }}</span>
+        </div>
+        <button type="submit" v-on:click="submit">提交</button>
+    </div>
+
+<script type="text/javascript">
+    //<input v-on:keyup.enter="submit"> 只有在key是Enter时调用vm.submit()
+    var vm = new Vue({
+        el : "#app",
+        data : {
+            message : "test",
+            message2 : "hi",
+            checkedNames : ['jack', 'john'],
+            picked : ""
+        }
+    })
+
+</script>
+</body>
+</html>

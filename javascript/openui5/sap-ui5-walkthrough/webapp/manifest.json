@@ -1,0 +1,64 @@
+
+{
+	"#文件注释":"JSON文件使用键值对格式注释  此处定义 开头为#的均为注释",
+	"#manifest.json":"清单文件  由saoUI5自行读取并实例化组件  包含所有全局应用的程序设置和参数()",
+	
+	"_version":"1.12.0",
+	"sap.app":{
+		
+		"#id":"必须唯一，并且与组件ID/名称空间相对应,长度小于70个字符",
+		"id":"sap.ui.demo.walkthrough",
+		
+		"#type":"定义我们想配置的内容，此处我们定义为应用程序",
+		"type":"application",
+		
+		"#i18n":"定义资源包文件的路径",
+		"i18n":"i18n/i18n.properties",
+		
+		"title":"{{appTitle}}",
+		"description":"{{appDescription}}",
+		
+		"#applicationVersion": "定义应用程序的版本信息",
+		"applicationVersion":{
+			"version":"1.0.0"
+		}
+	},
+	"sap.ui":{
+		"technology":"UI5",
+		
+		"#deviceType告诉app支持哪些应用设备":"",
+		"deviceTypes":{
+			"desktop":true,
+			"tablet":true,
+			"phone":true
+		}
+	},
+	"sap.ui5":{
+		
+		"#rootView":"如果指定了该参数 则组件将viewName指定的路径作为根目录并实例化视图",
+		"rootView":{
+			"viewName":"sap.ui.demo.walkthrough.view.App",
+			"type":"XML",
+			"async":true,
+			"id":"app"
+		},
+		
+		"#dependencies":"声明应用程序中使用的UI库",
+		"dependencies":{
+			"minUI5Version":"1.30",
+			"libs":{
+				"sap.m":{}
+			}
+		},
+		"#models":"在models中定义的模型将会在app启动时由SAPUI5自动实例化，例如在下面的文件中我们定义了键名i18n，并按名称空间指定了包文件",
+		"models":{
+			"i18n":{
+				"type":"sap.ui.model.resource.ResourceModel",
+				"settings":{
+					"bundleName":"sap.ui.demo.walkthrough.i18n.i18n"
+				}
+			}
+		}
+	}
+
+}

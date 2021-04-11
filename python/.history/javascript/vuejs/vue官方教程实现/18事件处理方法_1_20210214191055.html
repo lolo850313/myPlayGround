@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+    <!-- 注意 li 中的is 让li可以使用模板todo-item -->
+    <div id="app">
+        <button v-on:click="alertInfo">Greet</button>
+    </div>
+    
+<script type="text/javascript">
+    var vm = new Vue({
+        el : "#app",
+        data : {
+            counter : 1
+        },
+        methods:{
+            addCounter : function(){
+                this.counter += 1
+            }
+        }
+    })
+</script>
+</body>
+</html>
