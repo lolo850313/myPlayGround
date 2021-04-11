@@ -1,39 +1,43 @@
 sap.ui.define([
-	"sap/ui/core/UIComponent",
-	"sap/ui/model/json/JSONModel",
-	"sap/ui/model/resource/ResourceModel"
-], function (UIComponent, JSONModel, ResourceModel) {
-	"use strict";
+    'sap/ui/core/UIComponent',
+    'sap/ui/model/json/JSONModel',
+    'sap/ui/model/resource/ResourceModel',
 
-	return UIComponent.extend("sap.ui.demo.walkthrough.Component", {
-		metadata : {
-			"rootView": {
-				"viewName": "sap.ui.demo.walkthrough.view.App",
-				"type": "XML",
-				"async": true,
-				"id": "app"
-			}
-		},
+], function(UIComponent, JSONModel, ResourceModel) {
+    "use strict";
 
-		init : function () {
-			// call the init function of the parent
-			UIComponent.prototype.init.apply(this, arguments);
+    return UIComponent.extend("sap.ui.demo.walkthrough.Component", {
+        metadata : {
+            rootView : {
+                "viewName" : "sap.ui.demo.walkthrough.view.App",
+                "type" : "XML",
+                "async" : true,
+                "id" : "app"
+            }
+        },
 
-			// set data model
-			var oData = {
-				recipient : {
-					name : "World"
-				}
-			};
-			var oModel = new JSONModel(oData);
-			this.setModel(oModel);
+        init : function () {
+            UIComponent.prototype.init.apply(this, arguments)
 
-			// set i18n model
-			var i18nModel = new ResourceModel({
-				bundleName : "sap.ui.demo.walkthrough.i18n.i18n"
-			});
-			this.setModel(i18nModel, "i18n");
-		}
-	});
+            var oData = {
+                recipient:{
+                    name :"UI 5 uicomponent"
+                }
+            }
 
+            var oModel = new JSONModel(oData)
+            this.getView().setModel(oModel)
+
+            var i18nModel = new ResourceModel({
+                bundelName : "sap.ui.demo.walkthrough.i18n.i18n",
+                supportedLocales:[""],
+                fallbackLocale:""
+            })
+
+            this.getView().setModel(i18nModel, "i18n")
+
+            
+        }
+
+    })
 });
