@@ -4,8 +4,9 @@
 	xmlns:mvc="sap.ui.core.mvc"
 	displayBlock="true"
 	>
+	<!-- 注意pages和Page中p的大小不一样 -->
 	<App>
-		<Pages>
+		<pages>
 			<Page title="{i18n>homePageTitle}">
 				<content>
 					<Panel headerText="{i18n>helloPanelTitle}">
@@ -22,6 +23,6 @@
 					</Panel>
 				</content>
 			</Page>
-		</Pages>
+		</pages>
 	</App>
 </mvc:View>
