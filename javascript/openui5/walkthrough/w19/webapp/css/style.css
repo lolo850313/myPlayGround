@@ -1,0 +1,15 @@
+/* 当语言是left向right写的 */
+
+html[dir="ltr"] .myAppDemoWt .myCustomButton.sapBtn {
+    margin-right: 0.125rem;
+}
+
+/* 当语言是right向left写的 */
+html[dir="rtl"] .myAppDemoWt .myCustomButton.sapBtn {
+    margin-left: 0.125rem;
+}
+
+.myAppDemoWt .myCustomText {
+    display: inline-block;
+    font-weight: bold;
+}
