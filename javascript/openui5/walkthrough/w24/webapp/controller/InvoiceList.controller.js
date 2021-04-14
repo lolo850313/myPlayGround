@@ -16,7 +16,7 @@ sap.ui.define([
 
 			this.getView().setModel(oViewModel, "view")
 		},
-		onFilterInvoices : function (oView) {
+		onFilterInvoices : function (oEvent) {
 			var aFilter = []
 			var sQuery = oEvent.getParameter("query")
 			if (sQuery) {
@@ -24,7 +24,7 @@ sap.ui.define([
 			}
 
 			var oList = this.byId("invoiceList")
-			var oBinding = oList.getBingding("items")
+			var oBinding = oList.getBinding("items")
 			oBinding.filter(aFilter)
 		}
 	});
