@@ -18,6 +18,9 @@ sap.ui.define([
             })
 
             var sPath = "../localService"
+            oMockServer.simulate(sPath + "/metadata.xml", sPath + "/mockdata")
+
+            oMockServer.start()
 
         }
     }
