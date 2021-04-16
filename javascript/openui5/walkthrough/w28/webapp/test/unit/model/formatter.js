@@ -18,25 +18,22 @@ sap.ui.define([
 
     QUnit.test("Should return the translate texts", function (assert) {
         var oModel = this.stub()
-
         oModel.withArgs("i18n").returns(this._oResourceModel)
 
         var oViewStub = {
             getModel : oModel
         }
 
-        oModel.withArgs("i18n").returns(oViewStub)
-
         var oControllerStub = {
             getView : this.stub().returns(oViewStub)
         }
         var fnIsolatedFormatter = formatter.statusText.bind(oControllerStub)
 
-        assert.strictEqual(fnIsolatedFormatter("A"), "New", "The long text for status A is correct")
+        assert.strictEqual(fnIsolatedFormatter("A"), "New i18n", "The long text for status A is correct")
 
-        assert.strictEqual(fnIsolatedFormatter("B"), "In progress", "The long text for status B is correct")
+        assert.strictEqual(fnIsolatedFormatter("B"), "In Progress i18n", "The long text for status B is correct")
 
-        assert.strictEqual(fnIsolatedFormatter("C"), "Done", "The long text for status C is correct")
+        assert.strictEqual(fnIsolatedFormatter("C"), "Done i18n", "The long text for status C is correct")
 
         assert.strictEqual(fnIsolatedFormatter("Foo"), "Foo", "The long text for status Foo is correct")
     })
