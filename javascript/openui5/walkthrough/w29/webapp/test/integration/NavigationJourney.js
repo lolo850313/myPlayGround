@@ -20,6 +20,6 @@ sap.ui.define([
 
         Then.onTheAppPage.iShouldSeeTheHelloDialog()
 
-        Then.iTeardownApp()
+        Then.iTeardownMyApp()
     })
 });
