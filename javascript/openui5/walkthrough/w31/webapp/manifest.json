@@ -72,15 +72,16 @@
 			},
 			"routes" : [
 				{
-					"pattern" : "",
-					"name" : "overview",
-					"target" : "overview"
-				},
-				{
 					"pattern" : "detail",
 					"name" : "detail",
 					"target" : "detail"
+				},
+				{
+					"pattern" : "",
+					"name" : "overview",
+					"target" : "overview"
 				}
+				
 			],
 			"targets" : {
 				"overview" : {

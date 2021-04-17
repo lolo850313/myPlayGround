@@ -18,27 +18,6 @@ sap.ui.define([
 		onOpenDialog : function () {
 			this.getOwnerComponent().openHelloDialog()
 		}
-		// onOpenDialog : function () {
-		// 	var oView = this.getView()
-
-		// 	if (!this.pDialog) {
-		// 		this.pDialog = Fragment.load({
-		// 			id : oView.getId(),
-		// 			name : "sap.ui.demo.walkthrough.view.HelloDialog",
-		// 			controller : this
-		// 		}).then(function (oDialog) {
-		// 			oView.addDependent(oDialog)
-		// 			return oDialog
-		// 		})
-		// 	}
-
-		// 	this.pDialog.then(function (oDialog) {
-		// 		oDialog.open()
-		// 	})
-		// },
-		// onCloseDialog : function () {
-		// 	this.byId("helloDialog").close()
-		// }
 	});
 
 });
