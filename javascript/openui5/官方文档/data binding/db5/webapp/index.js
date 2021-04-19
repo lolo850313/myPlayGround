@@ -1,7 +1,8 @@
 sap.ui.require([
     "sap/ui/model/json/JSONModel",
     "sap/ui/core/mvc/XMLView",
-], function (JSONModel, XMLView) {
+    "sap/ui/model/BindingMode"
+], function (JSONModel, XMLView, BindingMode) {
     "use strict";
 
     sap.ui.getCore().attachInit(function () {
@@ -11,6 +12,8 @@ sap.ui.require([
             enabled: true,
             panelHeaderText : "Data Binding Basics"
         })
+
+        oModel.setDefaultBindingMode(BindingMode.OneWay)
 
         sap.ui.getCore().setModel(oModel)
 
