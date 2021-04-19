@@ -9,8 +9,7 @@ sap.ui.require([
         var oModel = new JSONModel({
             firstName : "Harry",
             lastName : "Hawk",
-            enabled: true,
-            panelHeaderText : "Data Binding Basics"
+            enabled: true
         })
 
         sap.ui.getCore().setModel(oModel)
