@@ -34,13 +34,11 @@
                     formatter : '.formatMail'
                     }" 
                     text="{i18n>sendEmail}" />
-                <!-- <Link href="{
-						parts: ['/firstName','/lastName'],
-						formatter: '.formatMail'
-					}"
-					text="{i18n>sendEmail}"/> -->
+            </l:VerticalLayout>
+            <l:VerticalLayout>
+                <Label labelFor="salesAmount" text="{i18n>salesAmount}:" />
+                <Input  description="{/currencyCode}" enabled="{/enabled}" id="salesAmount" />
             </l:VerticalLayout>
         </content>
     </Panel>
-
 </mvc:View>
