@@ -6,6 +6,11 @@ sap.ui.require([
     "use strict";
 
     sap.ui.getCore().attachInit(function () {
+        var oProductModel = new JSONModel()
+
+        oProductModel.loadData("./model/Products.json")
+        sap.ui.getCore().setModel(oProductModel, "products")
+
         var oModel = new JSONModel({
             firstName : "Harry",
             lastName : "Hawk",
@@ -16,7 +21,7 @@ sap.ui.require([
                 zip: "69190",
                 country: "Germany"
                 },
-            salesAmount: 12345.6789,
+            salesAmount: 12345.67,
             currencyCode: "EUR"
         })
 
