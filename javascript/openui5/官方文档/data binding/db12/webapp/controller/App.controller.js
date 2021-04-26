@@ -19,6 +19,7 @@ sap.ui.define([
         },
 
         formatStockValue : function (fUnitPrice, iStockLevel, sCurrCode) {
+            console.log(fUnitPrice, iStockLevel, sCurrCode);
             var sBrowserLocale = sap.ui.getCore().getConfiguration().getLanguage()
             var oLocale = new Locale(sBrowserLocale)
             var oLocaleData = new LocaleData(oLocale)
