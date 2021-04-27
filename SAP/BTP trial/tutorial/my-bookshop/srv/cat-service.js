@@ -2,6 +2,7 @@ module.exports = (srv) => {
     const {Books} = cds.entities('my.bookshop')
 
     srv.before('CREATE', 'Orders', async(req) => {
+        console.log(req);
         const order = req.data
 
         if (!order.amount || order.amount <= 0) {
