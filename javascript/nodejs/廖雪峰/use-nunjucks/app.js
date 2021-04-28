@@ -25,11 +25,11 @@ function createEnv(path, opts) {
     return env
 };
 
-var env = createEnv(__dirname + 'views', {
+var env = createEnv('views', {
     watch : true,
     filters : {
         hex : function (n) {
-            console.log(n);
+            
             return '0x' + n.toString(16)
         }
     }

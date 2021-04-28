@@ -1,1 +1,1 @@
-watch
+__dirname + 
