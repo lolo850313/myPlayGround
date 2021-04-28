@@ -119,3 +119,6 @@ javascript/react/reactTest/my-app/.eslintcache
 javascript/react/reactTest/my-app/.eslintcache
 
 .pdf
+
+*.zip
+*.7z
