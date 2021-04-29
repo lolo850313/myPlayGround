@@ -19,12 +19,32 @@ sap.ui.define([
         },
 
         formatStockValue : function (fUnitPrice, iStockLevel, sCurrCode) {
-            console.log(fUnitPrice, iStockLevel, sCurrCode);
             var sBrowserLocale = sap.ui.getCore().getConfiguration().getLanguage()
             var oLocale = new Locale(sBrowserLocale)
             var oLocaleData = new LocaleData(oLocale)
             var oCurrency = new Currency(oLocaleData.mData.currencyFormat)
             return oCurrency.formatValue([fUnitPrice * iStockLevel, sCurrCode], "string")
+        },
+
+        onItemSelected : function (oEvent) {
+            var oSelectedItem = oEvent.getSource()
+            var oContext = oSelectedItem.getBindingContext("products")
+            var sPath = oContext.getPath()
+            var oProductDetailPanel = this.byId("productDetailsPanel")
+
+            console.log(oSelectedItem);
+            console.log(1);
+            console.log(oContext);
+            console.log(2);
+            console.log(sPath);
+            console.log(3);
+            console.log(oProductDetailPanel);
+            console.log(4);
+
+            oProductDetailPanel.bindElement({
+                path : sPath,
+                model : "products"
+            })
         }
     })
 });
