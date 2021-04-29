@@ -4,8 +4,12 @@ const fs = require('fs')
 const app = new Koa()
 
 const main = (ctx) => {
-    ctx.response.type = 'html'
-    ctx.response.body = fs.createReadStream('./javascript/nodejs/阮一峰/koa/demos/template.html')
+    if (ctx.request.path !== '/') {
+        ctx.response.type = 'html'
+        ctx.response.body = '<a href="/">Index Page</a>'
+    } else {
+        ctx.response.body = 'hello world'
+    }
 }
 
 app.use(main)
