@@ -3,7 +3,7 @@ const app = new Koa()
 
 const main = (ctx) => {
     ctx.throw(404)
-    ctx.response.bodyu = 'Page not found'
+    ctx.response.body = 'Page not found'
 }
 
 app.use(main)
