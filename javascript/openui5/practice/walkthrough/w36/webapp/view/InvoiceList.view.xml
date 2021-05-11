@@ -24,7 +24,7 @@
             </Toolbar>
         </headerToolbar>
         <columns>
-            <Column hAlign="End" minScreenWidth="small" demandPopin="true" width="4em">
+            <Column hAlign="End" minScreenWidth="small" demandPopin="false" width="5em">
                 <Text text="{i18n>columnQuantity}" />
             </Column>
             <Column>
@@ -57,5 +57,29 @@
                 </cells>
             </ColumnListItem>
         </items>
+        <!-- <items>
+            <ObjectListItem 
+                title="{invoice>Quantity} * {invoice>ProductName} " 
+                number="{
+                    parts: [{path:'invoice>ExtendedPrice'}, {path:'view>/currency'}],
+                    type : 'sap.ui.model.type.Currency',
+                    formatOptions : {
+                        showMeasure: false
+                    }
+                }"
+                numberUnit="{view>/currency}"
+                numberState="{=  ${invoice>ExtendedPrice} > 50? 'Error' : 'Success'}"
+
+                type="Navigation"
+                press="onPress"
+            >
+                <firstStatus>
+                    <ObjectStatus text="{
+                        path : 'invoice>Status',
+                        formatter : '.formatter.statusText'
+                        }" />
+                </firstStatus>
+            </ObjectListItem>
+        </items> -->
     </Table>
 </mvc:View>
