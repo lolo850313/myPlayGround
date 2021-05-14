@@ -17,7 +17,7 @@ sap.ui.define([
 		onPress: function (oEvent) {
 			var sMessage;
 			try {
-				sMessage = this.getResourceBundle().getText("buttonOk", [oEvent.getSourceXYZ().getId()]);
+				sMessage = this.getResourceBundle().getText("buttonOk", [oEvent.getSource().getId()]);
 			} catch (oException) {
 				sMessage = this.getResourceBundle().getText("buttonErrorOccurred");
 				Log.error(oException.stack);
