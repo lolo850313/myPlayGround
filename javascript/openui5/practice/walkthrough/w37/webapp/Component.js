@@ -42,8 +42,19 @@ sap.ui.define([
 			delete this._helloDialog
 		},
 
-		// openHelloDialog : function () {
-		// 	this._helloDialog.open()	
-		// }
+		getContentDensityClass : function () {
+			if (!this._sContentDensityClass) {
+				if (!Device.support.touch) {
+					this._sContentDensityClass = "sapUiSizeCompact"
+				} else {
+					this._sContentDensityClass = "sapUiSizeCozy"
+				}
+			}
+
+			return this._sContentDensityClass
+		},
+		openHelloDialog : function () {
+			this._helloDialog.open()
+		}
 	});
 });
