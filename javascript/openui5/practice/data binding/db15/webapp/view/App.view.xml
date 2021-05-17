@@ -90,11 +90,12 @@
         <List 
             id="ProductList" 
             headerText="{i18n>productListTitle}" 
-            items="{path:'products>/Products', path:'.productListFactory'}">
-            <depengdents>
+            items=
+                "{path:'products>/Products', factory:'.productListFactory'}">
+            <dependents>
                 <core:Fragment fragmentName="sap.ui.demo.db.view.ProductSimple" type="XML" />
                 <core:Fragment fragmentName="sap.ui.demo.db.view.ProductExtended" type="XML" />
-            </depengdents>
+            </dependents>
         </List>
     </Panel>
     <Panel id="productDetailsPanel" headerText="{i18n>panel4HeaderText}" class="sapUiResponsiveMargin" width="auto">

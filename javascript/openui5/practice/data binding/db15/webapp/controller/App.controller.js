@@ -20,10 +20,7 @@ sap.ui.define([
         },
 
         formatStockValue : function (fUnitPrice, iStockLevel, sCurrCode) {
-            var sBrowserLocale = sap.ui.getCore().getConfiguration().getLanguage()
-            var oLocale = new Locale(sBrowserLocale)
-            var oLocaleData = new LocaleData(oLocale)
-            var oCurrency = new Currency(oLocaleData.mData.currencyFormat)
+            var oCurrency = new Currency();
             return oCurrency.formatValue([fUnitPrice * iStockLevel, sCurrCode], "string")
         },
 
@@ -43,10 +40,12 @@ sap.ui.define([
             })
         },
         productListFactory : function (sId, oContext) {
+            console.log(sId, oContext);
             var oUIControl;
 
             if (oContext.getProperty("UnitsInStock") === 0 && oContext.getProperty("Discontinued")) {
                 oUIControl = this.byId("productSimple").clone(sId)
+                // console.log(this.byId("productSimple"), oUIControl);
             } else {
                 oUIControl = this.byId("productExtended").clone(sId)
                 if (oContext.getProperty("UnitsInStock") < 1) {
