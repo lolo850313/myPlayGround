@@ -27,19 +27,14 @@ sap.ui.define([
         },
 
         onItemSelected : function (oEvent) {
+            // 得到当前事件的dom元素
             var oSelectedItem = oEvent.getSource()
+            // 得到当前dom元素的product上下文
             var oContext = oSelectedItem.getBindingContext("products")
+            // 得到products的路径/Products/4
             var sPath = oContext.getPath()
-            var oProductDetailPanel = this.byId("productDetailsPanel")
 
-            console.log(oSelectedItem);
-            console.log(1);
-            console.log(oContext);
-            console.log(2);
-            console.log(sPath);
-            console.log(3);
-            console.log(oProductDetailPanel);
-            console.log(4);
+            var oProductDetailPanel = this.byId("productDetailsPanel")
 
             oProductDetailPanel.bindElement({
                 path : sPath,
