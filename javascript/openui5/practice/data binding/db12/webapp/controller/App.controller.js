@@ -19,11 +19,14 @@ sap.ui.define([
         },
 
         formatStockValue : function (fUnitPrice, iStockLevel, sCurrCode) {
-            console.log(fUnitPrice, iStockLevel, sCurrCode);
-            var sBrowserLocale = sap.ui.getCore().getConfiguration().getLanguage()
-            var oLocale = new Locale(sBrowserLocale)
-            var oLocaleData = new LocaleData(oLocale)
-            var oCurrency = new Currency(oLocaleData.mData.currencyFormat)
+            // console.log(fUnitPrice, iStockLevel, sCurrCode);
+            // var sBrowserLocale = sap.ui.getCore().getConfiguration().getLanguage()
+            // var oLocale = new Locale(sBrowserLocale)
+            // var oLocaleData = new LocaleData(oLocale)
+            // var oCurrency = new Currency(oLocaleData.mData.currencyFormat)
+            
+            var oCurrency = new Currency();
+            
             return oCurrency.formatValue([fUnitPrice * iStockLevel, sCurrCode], "string")
         }
     })
