@@ -22,7 +22,8 @@ sap.ui.require([
                 country: "Germany"
                 },
             salesAmount: 12345.67,
-            currencyCode: "EUR"
+            currencyCode: "EUR",
+            priceThreshold : 20
         })
 
         sap.ui.getCore().setModel(oModel)
