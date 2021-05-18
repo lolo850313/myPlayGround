@@ -15,7 +15,7 @@
 							items="{
 								path: '/People'
 							}">
-							<headerToolBar>
+							<headerToolbar>
 								<OverflowToolbar>
 									<content>
 										<ToolbarSpacer />
@@ -26,7 +26,7 @@
 											/>
 									</content>
 								</OverflowToolbar>
-							</headerToolBar>
+							</headerToolbar>
 							<columns>
 								<Column id="userNameColumn">
 									<Text text="{i18n>userNameLabelText}"/>
