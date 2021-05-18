@@ -31,6 +31,7 @@ sap.ui.define([
 		},
 
 		_getText : function (sTextId, aArgs) {
+			console.log(sTextId, aArgs) ;
 			return this.getOwnerComponent().getModel("i18n").getResourceBundle().getText(sTextId, aArgs)
 		}
 	});
