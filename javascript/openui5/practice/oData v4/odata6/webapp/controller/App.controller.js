@@ -16,12 +16,34 @@ sap.ui.define([
 		 *  Hook for initializing the controller
 		 */
 		onInit : function () {
-			var oJSONData = {
+			var oMessageManager = sap.ui.getCore().getMessageManager(),
+				oMessageModel = oMessageManager.getMessageModel(),
+				oMessageModelBinding = oMessageModel.bindList("/", undefined, [], new Filter("technical", FilterOperator.EQ, true))
+
+			oViewModel = new JSONModel({
 				busy : false,
+				hasUIChanges : false,
+				usernameEmpty : true,
 				order : 0
-			};
-			var oModel = new JSONModel(oJSONData);
-			this.getView().setModel(oModel, "appView");
+			})
+			
+
+			this.getView().setModel(oViewModel, "appView");
+			this.getView().setModel(oMessageModel, "message");
+			oMessageModelBinding.attachChange(this.onMessageBindingChange, this)
+			this._bTechnicalErrors = false
+		},
+
+		onCreate : function () {
+			var oList = this.byId("peopleList"),
+				oBinding = oList.getBinding("items"),
+				oContext = oBinding.create({
+					"UserName" : "",
+					"FirstName" : "",
+					"LastName":"",
+					"Age": 18
+				})
+
 		},
 
 		onRefresh : function () {
@@ -68,6 +90,17 @@ sap.ui.define([
 		_getText : function (sTextId, aArgs) {
 			// console.log(sTextId, aArgs)
 			return this.getOwnerComponent().getModel("i18n").getResourceBundle().getText(sTextId, aArgs)
+		},
+
+		_setUIChanges: function (bHasChanges) {
+			if (this._bTechnicalErrors) {
+				bHasChanges = true
+			} else if (bHasChanges === undefined){
+				bHasChanges = this.getView().getModel().hasPendingChanges()
+			}
+
+			var oModel = this.getView().getModel("appView")
+			oModel.setProperty("/hasUIChanges", bHasChanges)
 		}
 	});
 });
