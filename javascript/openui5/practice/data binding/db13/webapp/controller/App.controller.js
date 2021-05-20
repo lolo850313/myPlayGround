@@ -35,11 +35,12 @@ sap.ui.define([
             var sPath = oContext.getPath()
 
             var oProductDetailPanel = this.byId("productDetailsPanel")
-
+            console.log(sPath);
             oProductDetailPanel.bindElement({
                 path : sPath,
                 model : "products"
             })
+            console.log(sPath);
         }
     })
 });

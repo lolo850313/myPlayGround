@@ -40,12 +40,15 @@ sap.ui.define([
             })
         },
         productListFactory : function (sId, oContext) {
-            console.log(sId, oContext);
+            console.log(sId);
+            console.log(oContext);
             var oUIControl;
 
             if (oContext.getProperty("UnitsInStock") === 0 && oContext.getProperty("Discontinued")) {
                 oUIControl = this.byId("productSimple").clone(sId)
-                // console.log(this.byId("productSimple"), oUIControl);
+                console.log(111);
+                console.log(oUIControl);
+                console.log(this.byId("productSimple"));
             } else {
                 oUIControl = this.byId("productExtended").clone(sId)
                 if (oContext.getProperty("UnitsInStock") < 1) {
@@ -54,6 +57,9 @@ sap.ui.define([
                             path : "i18n>outOfStock"
                         }
                     }))
+                    console.log(222);
+                    console.log(oUIControl);
+                    console.log(this.byId("productSimple"));
                 }
             }
 
