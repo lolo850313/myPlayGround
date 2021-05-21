@@ -18,18 +18,17 @@ sap.ui.define([
 		onInit : function () {
 			var oMessageManager = sap.ui.getCore().getMessageManager(),
 				oMessageModel = oMessageManager.getMessageModel(),
-				oMessageModelBinding = oMessageModel.bindList("/", undefined, [], new Filter("technical", FilterOperator.EQ, true))
-
-			oViewModel = new JSONModel({
-				busy : false,
-				hasUIChanges : false,
-				usernameEmpty : true,
-				order : 0
-			})
-			
+				oMessageModelBinding = oMessageModel.bindList("/", undefined, [], new Filter("technical", FilterOperator.EQ, true)),
+				oViewModel = new JSONModel({
+					busy : false,
+					hasUIChanges : false,
+					usernameEmpty : true,
+					order : 0
+				})
 
 			this.getView().setModel(oViewModel, "appView");
 			this.getView().setModel(oMessageModel, "message");
+
 			oMessageModelBinding.attachChange(this.onMessageBindingChange, this)
 			this._bTechnicalErrors = false
 		},
@@ -44,6 +43,28 @@ sap.ui.define([
 					"Age": 18
 				})
 
+			this._setUIChanges()
+			this.getView().getModel("appView").setProperty("/usernameEmpty", true)
+
+			oList.getItems().some(function (oItem) {
+				if (oItem.getBindingContext() === oContext) {
+					oItem.focus()
+					oItem.setSelected()
+					return true
+				}
+			})
+
+		},
+
+		onInputChange : function (oEvt) {
+			if (oEvt.getParameter("escPressed")) {
+				this._setUIChanges()		
+			} else {
+				this._setUIChanges(true)
+					if (oEvt.getSource().getParent().getBindingContext().getProperty("Username")) {
+						this.getView().getModel("appView").setProperty("/usernameEmpty", false)
+					}
+			}
 		},
 
 		onRefresh : function () {
@@ -57,12 +78,31 @@ sap.ui.define([
 			MessageToast.show(this._getText("refreshSuccessMessage"))
 		},
 
+		onSave : function () {
+			var fnSuccess = function () {
+				this._setBusy(false)
+				MessageToast.show(this._getText("changesSendMessage"))
+				this._setUIChanges()
+			}.bind(this)
+
+			this._setBusy(true)
+			this.getView().getModel().submitBatch("peopleGroup").then(fnSuccess, fnError)
+
+			this._bTechnicalErrors = false
+		},
+
 		onSearch : function () {
 			var oView = this.getView(),
 				sValue = oView.byId("searchField").getValue(),
 				oFilter = new Filter("LastName", FilterOperator.Contains, sValue)
 
 			oView.byId("peopleList").getBinding("items").filter(oFilter, FilterType.Application)
+		},
+
+		onResetChanges : function () {
+			this.byId("peopleList").getBinding("items").resetChanges()
+			this._bTechnicalErrors = false
+			this._setUIChanges()
 		},
 
 		onSort : function () {
@@ -87,20 +127,52 @@ sap.ui.define([
 			MessageToast.show(sMessage)
 		},
 
+		onMessageBindingChange: function (oEvent) {
+			var aContexts = oEvent.getSource().getContexts(),
+				aMessages,
+				bMessageOpen = false
+
+			if (bMessageOpen || !aContexts.length) {
+				return
+			}
+
+			aMessages = aContext.map(function (oContext) {
+				return oContext.getObject()
+			})
+
+			sap.ui.getCore().getMessageManager().removeMessages(aMessage)
+
+			this._setUIChanges()
+			this._bTechnicalErrors = true
+
+			MessageBox.error(aMessages[0].message, {
+				id : "serviceErrorMessageBox",
+				onClose : function () {
+					bMessageOpen = false
+				}
+			})
+
+			bMessageOpen = true
+		},
+
 		_getText : function (sTextId, aArgs) {
 			// console.log(sTextId, aArgs)
 			return this.getOwnerComponent().getModel("i18n").getResourceBundle().getText(sTextId, aArgs)
 		},
 
-		_setUIChanges: function (bHasChanges) {
+		_setUIChanges: function (bHasUIChanges) {
 			if (this._bTechnicalErrors) {
-				bHasChanges = true
-			} else if (bHasChanges === undefined){
-				bHasChanges = this.getView().getModel().hasPendingChanges()
+				bHasUIChanges = true
+			} else if (bHasUIChanges === undefined){
+				bHasUIChanges = this.getView().getModel().hasPendingChanges()
 			}
 
 			var oModel = this.getView().getModel("appView")
-			oModel.setProperty("/hasUIChanges", bHasChanges)
+			oModel.setProperty("/hasUIChanges", bHasUIChanges)
+		},
+		_setBusy : function (bIsBusy) {
+			var oModel = this.getView().getModel("appView")
+			oModel.setProperty("/busy", bIsBusy)
 		}
 	});
 });

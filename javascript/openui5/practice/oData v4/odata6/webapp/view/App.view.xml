@@ -14,15 +14,29 @@
 							growingThreshold="10"
 							items="{
 								path: '/People',
-								parameters : {$count: true}
+								parameters : {
+									$count: true,
+									$$updateGroupId : 'peopleGroup'
+									}
 							}">
 							<headerToolbar>
 								<OverflowToolbar>
 									<content>
 										<ToolbarSpacer />
 										<SearchField id="searchField" width="20%" 
-										placeholder="{i18n>searchFieldPlaceholder}" 
-										search=".onSearch"/>
+											placeholder="{i18n>searchFieldPlaceholder}" 
+											search=".onSearch"
+											enabled="{= !${appView>/hasUIChanges}}"
+											/>
+										<Button 
+											id="addUserButton" icon="sap-icon://add"
+											tooltip="{i18n>createButtonText}"
+											press=".onCreate"
+											>
+											<layoutData>
+												<OverflowToolbarLayoutData priority="NeverOverflow" />
+											</layoutData>
+										</Button>
 										<Button 
 											id="refreshUserButton" icon="sap-icon://refresh"
 											tooltip="{i18n>refreshButtonText}"
@@ -33,6 +47,7 @@
 											press=".onSort"
 											tooltip="{i18n>sortButtonText}"
 											icon="sap-icon://sort"
+											enabled="{= !${appView>/hasUIChanges}}"
 											/>
 									</content>
 								</OverflowToolbar>
