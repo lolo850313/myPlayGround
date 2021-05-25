@@ -7,7 +7,7 @@ sap.ui.define([
     
     return Controller.extend("sap.ui.demo.walkthrough.controller.App", {
         
-        init : function () {
+        onInit : function () {
             var oData = {
                 recipient : {
                     name : "world"
