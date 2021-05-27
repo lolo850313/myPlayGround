@@ -1,27 +1,42 @@
 sap.ui.define([
-    "sap/m/RadioButton",
+    "sap/m/Image",
     "sap/m/Label",
-    "sap/m/RadioButtonGroup"
-], function (RadioButton, Label, RadioButtonGroup) {
+    "sap/m/RadioButtonGroup",
+    "sap/m/RadioButton"
+], function (Image, Label, RadioButton, RadioButtonGroup) {
     "use strict";
     
+    var oImage1 = new Image({
+        src : "img/donghai.jpg",
+        decorative: false,
+        alt: 'donghai'
+    }).placeAt("content")
+
+    var oImage2 = new Image({
+        src : "img/adi.jpg",
+        decorative: false,
+        alt: 'adi'
+    }).placeAt("content")
+
     var btn1 = new RadioButton({
-        text : "yes",
+        text : "left logo",
     })
 
     var btn2 = new RadioButton({
-        text : "no",
+        text : "right logo",
     })
 
-    var oLabel = new Label({
-        text : "Do you like basketball?"
-    }).placeAt("content")
+    var oLabel1 = new Label({
+        text : "Which logo do you like better?"
+    })
 
-    var oRadioBtnGrp = new RadioButtonGroup({
+    var oRadioBtnGrp1 = new RadioButtonGroup({
         columns : 2,
+        ariaLabelledBy: oLabel1,
+        buttons:[
+            btn1,
+            btn2
+        ]
     }).placeAt("content")
-
-    oRadioBtnGrp.addButton(btn1)
-    oRadioBtnGrp.addButton(btn2)
 
 })
