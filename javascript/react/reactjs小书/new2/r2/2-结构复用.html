@@ -10,24 +10,24 @@
     <div class="wrapper">
     </div>
     <script>
-        class LikeButton {
-            render(t) {
-                return
-                `
+    class LikeButton {
+        render(t) {
+            // 注意字符串模板的``应紧跟在return后面
+            return `
                 <button class="like-btn">
                     <span class="like-text">` + t + `</span>
                     <span>👍</span>
                 </button>
                 `
-            }
         }
-    
-        const wrapper = document.querySelector(".wrapper")
-        const button1 = new LikeButton()
-        wrapper.innerHTML = button1.render("取消")
-    
-        const button2 = new LikeButton()
-        wrapper.innerHTML += button2.render("点赞")
+    }
+
+    const wrapper = document.querySelector(".wrapper")
+    const button1 = new LikeButton()
+    wrapper.innerHTML = button1.render("取消")
+
+    const button2 = new LikeButton()
+    wrapper.innerHTML += button2.render("点赞")
         
     </script>
 </body>

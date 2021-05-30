@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+    </div>
+    <script>
+    class LikeButton {
+        render() {
+            this.el = createDOMFromString(`
+                <button class="like-btn">
+                    <span class="like-text">点赞</span>
+                    <span>👍</span>
+                </button>
+                `)
+            this.el.addEventListener('click', ()=>console.log('click'), false)
+            return this.el
+        }
+    }
+
+    const createDOMFromString = (domString) => {
+        const div = document.createElement("div")
+        div.innerHTML = domString
+        return div
+    }
+
+    const wrapper = document.querySelector(".wrapper")
+    const button1 = new LikeButton()
+    wrapper.appendChild(button1.render())
+
+    const button2 = new LikeButton()
+    // 是在parendNode节点中最后一个子节点后插入新Node或者DOMString（字符串，插入后为Text节点）
+    // 与 parentNode.appendChild() 的 区别在于：
+    // parentNode.append()可以同时传入多个节点或字符串，没有返回值；
+    // 而parentNode.appendChild()只能传一个节点，且不直接支持传字符串
+    // (需要parentNode.appendChild(document.createTextElement('字符串'))代替)，返回追加的Node节点。
+    wrapper.appendChild(button2.render())
+        
+    </script>
+</body>
+
+</html>
